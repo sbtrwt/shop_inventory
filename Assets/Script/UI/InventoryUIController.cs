@@ -2,27 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class InventoryUIController : MonoBehaviour
+namespace ShopInventory.UI
 {
-    [SerializeField] private Button buttonInventory;
-    [SerializeField] private Button buttonInventoryClose;
-    [SerializeField] private GameObject gameInventoryUI;
-    void Start()
+    public class InventoryUIController : MonoBehaviour
     {
-        if (buttonInventory)
-            buttonInventory.onClick.AddListener(OnClickShopOpen);
-        if (buttonInventoryClose)
-            buttonInventoryClose.onClick.AddListener(OnClickShopClose);
-    }
+        [SerializeField] private Button buttonInventory;
+        [SerializeField] private Button buttonInventoryClose;
+        [SerializeField] private GameObject gameInventoryUI;
+        void Start()
+        {
+            if (buttonInventory)
+                buttonInventory.onClick.AddListener(OnClickShopOpen);
+            if (buttonInventoryClose)
+                buttonInventoryClose.onClick.AddListener(OnClickShopClose);
+        }
 
-    private void OnClickShopOpen()
-    {
+        private void OnClickShopOpen()
+        {
 
-        gameInventoryUI.SetActive(true);
-    }
-    private void OnClickShopClose()
-    {
-        gameInventoryUI.SetActive(false);
+            gameInventoryUI.SetActive(true);
+        }
+        private void OnClickShopClose()
+        {
+            gameInventoryUI.SetActive(false);
+        }
     }
 }

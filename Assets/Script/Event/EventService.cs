@@ -1,30 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class EventService
+namespace ShopInventory.Service
 {
-    private static EventService instance;
-    public static EventService Instance
+    public class EventService
     {
-        get
+        //private static EventService instance;
+        //public static EventService Instance
+        //{
+        //    get
+        //    {
+        //        if (instance == null)
+        //        {
+        //            instance = new EventService();
+        //        }
+        //        return instance;
+        //    }
+        //}
+
+
+        public EventController OnItemBuy { get; private set; }
+        public EventController OnItemSell { get; private set; }
+
+
+        public EventService()
         {
-            if (instance == null)
-            {
-                instance = new EventService();
-            }
-            return instance;
+            OnItemBuy = new EventController();
+            OnItemSell = new EventController();
         }
-    }
-
-
-    public EventController OnItemBuy { get; private set; }
-    public EventController OnItemSell { get; private set; }
-
-
-    public EventService()
-    {
-        OnItemBuy = new EventController();
-        OnItemSell = new EventController();
     }
 }
