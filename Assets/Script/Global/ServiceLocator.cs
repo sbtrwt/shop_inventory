@@ -1,5 +1,7 @@
+using ShopInventory.Inventory;
 using ShopInventory.Player;
-using ShopInventory.Service;
+using ShopInventory.Event;
+using ShopInventory.Shop;
 using ShopInventory.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +13,9 @@ namespace ShopInventory.Global
     {
         private EventService eventService;
         private PlayerService playerService;
+        private ShopService shopService;
+        private InventoryService inventoryService;
+        
 
         [SerializeField] private UIService uiService;
 
@@ -24,6 +29,9 @@ namespace ShopInventory.Global
         private void InitializeServices(ServiceLocatorData data)
         {
             eventService = new EventService();
+            playerService = new PlayerService();
+            shopService = new ShopService();
+            inventoryService = new InventoryService();
         }
 
         private void InjectDependencies()

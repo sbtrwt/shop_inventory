@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace ShopInventory.Service
+namespace ShopInventory.Event
 {
     public class EventService
     {

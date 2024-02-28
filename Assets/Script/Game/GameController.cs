@@ -14,6 +14,10 @@ namespace ShopInventory.Game
         {
             serviceLocator = new ServiceLocator(serviceLocatorData);
         }
+        private void Update()
+        {
+            serviceLocator.Update();
+        }
     }
 }
 
