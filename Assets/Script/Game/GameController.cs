@@ -1,4 +1,5 @@
 using ShopInventory.Global;
+using ShopInventory.Shop;
 using ShopInventory.Utilities;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,14 +10,16 @@ namespace ShopInventory.Game
     public class GameController : MonoBehaviour
     {
         private ServiceLocator serviceLocator;
-        [SerializeField]private ServiceLocatorData serviceLocatorData;
+        
+        [SerializeField]private ServiceLocatorModel serviceLocatorData;
+     
         private void Start()
         {
             serviceLocator = new ServiceLocator(serviceLocatorData);
         }
         private void Update()
         {
-            serviceLocator.Update();
+            //serviceLocator.Update();
         }
     }
 }
