@@ -9,6 +9,7 @@ namespace ShopInventory.Item
     [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
     public class ItemSO : ScriptableObject
     {
+        public int ID;
         public ItemType type;
         public Sprite icon;
         public string description;
@@ -17,6 +18,7 @@ namespace ShopInventory.Item
         public float weight;
         public ItemRarity rarity;
         public float quantity;
+        public ItemView itemView;
 
     }
 }
