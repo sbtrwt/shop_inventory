@@ -41,14 +41,14 @@ namespace ShopInventory.Shop
                
         }
 
-        public void SetShopButton(Button shopButton)
+        public void SetShopButton(Button _shopButton)
         {
-            this.shopButton = GameObject.Instantiate(shopButton);
+            shopButton = GameObject.Instantiate(_shopButton);
             if (parent != null)
-                shopButton.transform.SetParent(parent?.transform, false);
-            this.shopButton.onClick.AddListener (ToggleShop);
+                shopButton.transform.SetParent(parent.transform, false);
+            shopButton.onClick.AddListener (OnToggleShop);
         }
-        public void ToggleShop()
+        public void OnToggleShop()
         {
             gameObject.SetActive(!gameObject.activeSelf);
         }
