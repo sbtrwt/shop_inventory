@@ -9,28 +9,33 @@ using UnityEngine;
 
 namespace ShopInventory.Global
 {
-    public class ServiceLocator 
+    public class ServiceLocator
     {
         private EventService eventService;
         private PlayerService playerService;
         private ShopService shopService;
         private InventoryService inventoryService;
-        
+
 
         [SerializeField] private UIService uiService;
 
 
-        public ServiceLocator(ServiceLocatorData data)
+        public ServiceLocator(ServiceLocatorModel data)
         {
             InitializeServices(data);
             InjectDependencies();
         }
 
-        private void InitializeServices(ServiceLocatorData data)
+        private void InitializeServices(ServiceLocatorModel data)
         {
             eventService = new EventService();
             playerService = new PlayerService();
-            shopService = new ShopService();
+            shopService = new ShopService(new ShopModel
+            {
+                shopSO = data.ShopSO,
+                canvas = data.Canvas,
+                shopButton = data.ShopButton
+            });
             inventoryService = new InventoryService();
         }
 
@@ -39,7 +44,7 @@ namespace ShopInventory.Global
         }
         public void Update()
         {
-            
+
         }
     }
 
