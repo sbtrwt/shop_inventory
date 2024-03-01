@@ -18,7 +18,7 @@ namespace ShopInventory.Item
         public float weight;
         public ItemRarity rarity;
         public float quantity;
-        public ItemView itemView;
+        public ItemView itemViewPrefab;
 
     }
 }

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af67f89d9ce22974fa2e2549c02c5f61, type: 3}
-  m_Name: sword_so
+  m_Name: health_potion_so
   m_EditorClassIdentifier: 
-  ID: 4
-  type: 1
-  icon: {fileID: 76023930, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
-  description: This is a wooden sword. Give initial attack range 2-3.
-  buyPrice: 2
-  sellPrice: 2
+  ID: 2
+  type: 2
+  icon: {fileID: -1480671407, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
+  description: This is health potion. give health 5-10.
+  buyPrice: 3
+  sellPrice: 3
   weight: 1
   rarity: 0
   quantity: 1

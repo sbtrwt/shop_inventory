@@ -9,15 +9,15 @@ namespace ShopInventory.Shop
     {
         private ShopView shopView;
         private ShopModel shopModel;
+
         public ShopController(ShopModel model)
         {
-            shopModel = new ShopModel();
-            shopModel.shopSO = model.shopSO;
-            shopModel.canvas = model.canvas;
-            shopModel.shopButton = model.shopButton;
+            shopModel = model;
+           
             InitView();
         }
 
+      
         public void InitView()
         {
             shopView = Object.Instantiate(shopModel.shopSO.ShopPrefab);
@@ -35,5 +35,10 @@ namespace ShopInventory.Shop
             shopView.gameObject.SetActive(!shopView.gameObject.activeSelf);
         }
         public void BuyItem() { }
+
+        public GameObject GetViewObject()
+        {
+            return shopView.gameObject;
+        }
     }
 }
