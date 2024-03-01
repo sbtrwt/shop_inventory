@@ -44,6 +44,7 @@ namespace ShopInventory.Item
         public void OnClickItem()
         {
             ItemSO itemData = itemController.GetItemData();
+            itemController.OnItemClick(itemData);
             Debug.Log("item click ID:" + itemData.ID);
         }
     }

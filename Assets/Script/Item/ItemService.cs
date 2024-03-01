@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopInventory.Event;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +13,15 @@ namespace ShopInventory.Item
         private List<ItemSO> allItems;
         private List<ItemController> allItemControllers;
         private GameObject parent;
+        private EventService eventService;
         public ItemService()
         {
                 
         }
-
+        public void InjectDependencies(EventService eventService)
+        {
+            this.eventService = eventService;
+        }
         public void InitController(List<ItemSO> allItems, GameObject parent)
         {
             this.allItems = allItems;
@@ -28,7 +33,7 @@ namespace ShopInventory.Item
                     allItemControllers.Add(new ItemController(new ItemModel { 
                          itemSO = item,
                          parent = parent
-                    }));
+                    }, eventService));
                 }
             }
         }

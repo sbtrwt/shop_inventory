@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemContainerController 
+public class ItemContainerController
 {
     ItemContainerModel itemContainerModel;
     ItemContainerView itemContainerView;
@@ -19,8 +19,6 @@ public class ItemContainerController
     {
         itemContainerView = Object.Instantiate(itemContainerModel.itemContainerSO.ItemContainerPrefab);
         itemContainerView.SetController(this);
-       
-
     }
     public void SetParent(GameObject parent)
     {

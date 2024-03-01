@@ -1,3 +1,4 @@
+using ShopInventory.Event;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,11 @@ namespace ShopInventory.Item
     {
         private ItemView itemView;
         private ItemModel itemModel;
+        private EventService eventService;
 
-        public ItemController(ItemModel model)
+        public ItemController(ItemModel model, EventService eventService)
         {
+            this.eventService = eventService;
             itemModel = model;
             InitView();
             if(model?.parent)
@@ -31,6 +34,11 @@ namespace ShopInventory.Item
         public ItemSO GetItemData()
         {
             return itemModel.itemSO;
+        }
+
+        public void OnItemClick(ItemSO itemData)
+        {
+            eventService.OnItemClick.InvokeEvent(itemData);
         }
     }
 }

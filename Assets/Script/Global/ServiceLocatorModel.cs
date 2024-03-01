@@ -15,5 +15,6 @@ namespace ShopInventory.Global
     {
         public ShopModel ShopModel;
         public ItemContainerModel ItemContainerModel;
+        public ItemDescriptionModel ItemDescriptionModel;
     }
 }

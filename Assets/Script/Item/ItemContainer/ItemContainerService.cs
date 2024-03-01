@@ -12,11 +12,11 @@ namespace ShopInventory.Item
         public ItemContainerService(ItemContainerModel model)
         {
             itemContainerModel = model;
-               itemContainerController = new ItemContainerController(model);
         }
         public void InjectDependencies(ItemService itemService)
         {
             this.itemService = itemService;
+            itemContainerController = new ItemContainerController(itemContainerModel);
         }
         public void InitItemContainer()
         {

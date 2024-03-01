@@ -18,6 +18,7 @@ namespace ShopInventory.Global
         private InventoryService inventoryService;
         private ItemContainerService itemContainerService;
         private ItemService itemService;
+        private ItemDescriptionService itemDescriptionService;
 
         [SerializeField] private UIService uiService;
 
@@ -36,12 +37,15 @@ namespace ShopInventory.Global
             inventoryService = new InventoryService();
             itemContainerService = new ItemContainerService(data.ItemContainerModel);
             itemService = new ItemService();
+            itemDescriptionService = new ItemDescriptionService(data.ItemDescriptionModel);
         }
 
         private void InjectDependencies()
         {
+            itemService.InjectDependencies(eventService);
             itemContainerService.InjectDependencies(itemService);
             shopService.InjectDependencies(itemContainerService);
+            itemDescriptionService.InjectDependencies(eventService);
         }
         public void Start()
         {

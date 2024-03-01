@@ -5,17 +5,7 @@ using UnityEngine;
 public class ItemContainerView : MonoBehaviour
 {
     private ItemContainerController itemContainerController;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void SetParent(GameObject parent)
     {
