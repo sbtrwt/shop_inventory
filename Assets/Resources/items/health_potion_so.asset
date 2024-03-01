@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2
   type: 2
-  icon: {fileID: 6711139061982437163, guid: fd19aa9e2065e5448ae57f1cae669ac2, type: 3}
+  icon: {fileID: -1480671407, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
   description: This is health potion. give health 5-10.
   buyPrice: 3
   sellPrice: 3

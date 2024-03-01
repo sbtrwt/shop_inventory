@@ -21,11 +21,16 @@ namespace ShopInventory.Item
         {
             itemView = Object.Instantiate(itemModel.itemSO.itemViewPrefab);
             itemView.SetController(this);
+            itemView.SetSprite(itemModel.itemSO.icon);
         }
         public void SetParent(GameObject parent)
         {
             itemModel.parent = parent;
             itemView.SetParent(parent);
+        }
+        public ItemSO GetItemData()
+        {
+            return itemModel.itemSO;
         }
     }
 }

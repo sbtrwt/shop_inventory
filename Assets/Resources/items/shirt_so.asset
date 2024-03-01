@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 3
   type: 0
-  icon: {fileID: 5236785144643497644, guid: fd19aa9e2065e5448ae57f1cae669ac2, type: 3}
+  icon: {fileID: -1854050275, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
   description: This is cloth.
   buyPrice: 2
   sellPrice: 2

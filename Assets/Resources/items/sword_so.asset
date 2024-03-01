@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 4
   type: 1
-  icon: {fileID: -8000257237967149311, guid: fd19aa9e2065e5448ae57f1cae669ac2, type: 3}
+  icon: {fileID: 76023930, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
   description: This is a wooden sword. Give initial attack range 2-3.
   buyPrice: 2
   sellPrice: 2
