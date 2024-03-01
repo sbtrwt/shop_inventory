@@ -15,7 +15,7 @@ namespace ShopInventory.Global
         private PlayerService playerService;
         private ShopService shopService;
         private InventoryService inventoryService;
-
+        private ItemContainerService itemContainerService;
 
         [SerializeField] private UIService uiService;
 
@@ -37,6 +37,7 @@ namespace ShopInventory.Global
                 shopButton = data.ShopButton
             });
             inventoryService = new InventoryService();
+            itemContainerService = new ItemContainerService();
         }
 
         private void InjectDependencies()
