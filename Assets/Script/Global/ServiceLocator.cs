@@ -6,6 +6,7 @@ using ShopInventory.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ShopInventory.Item;
 
 namespace ShopInventory.Global
 {
@@ -16,6 +17,7 @@ namespace ShopInventory.Global
         private ShopService shopService;
         private InventoryService inventoryService;
         private ItemContainerService itemContainerService;
+        private ItemService itemService;
 
         [SerializeField] private UIService uiService;
 
@@ -30,18 +32,20 @@ namespace ShopInventory.Global
         {
             eventService = new EventService();
             playerService = new PlayerService();
-            shopService = new ShopService(new ShopModel
-            {
-                shopSO = data.ShopSO,
-                canvas = data.Canvas,
-                shopButton = data.ShopButton
-            });
+            shopService = new ShopService(data.ShopModel);
             inventoryService = new InventoryService();
-            itemContainerService = new ItemContainerService();
+            itemContainerService = new ItemContainerService(data.ItemContainerModel);
+            itemService = new ItemService();
         }
 
         private void InjectDependencies()
         {
+            itemContainerService.InjectDependencies(itemService);
+            shopService.InjectDependencies(itemContainerService);
+        }
+        public void Start()
+        {
+            shopService.Start();
         }
         public void Update()
         {

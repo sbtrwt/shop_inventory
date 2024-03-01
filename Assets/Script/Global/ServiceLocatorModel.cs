@@ -1,4 +1,5 @@
-﻿using ShopInventory.Shop;
+﻿using ShopInventory.Item;
+using ShopInventory.Shop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,7 @@ namespace ShopInventory.Global
     [Serializable]
     public class ServiceLocatorModel
     {
-        public ShopSO ShopSO;
-        public GameObject Canvas;
-        public Button ShopButton;
+        public ShopModel ShopModel;
+        public ItemContainerModel ItemContainerModel;
     }
 }
