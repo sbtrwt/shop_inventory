@@ -16,6 +16,8 @@ namespace ShopInventory.Item
         {
             this.eventService = eventService;
             itemDescriptionModel = model;
+            InitView();
+            this.eventService.OnItemClick.AddListener(SetItemData);
         }
         public void InitView()
         {
@@ -30,6 +32,10 @@ namespace ShopInventory.Item
         public GameObject GetViewObject()
         {
             return itemDescriptionView.gameObject;
+        }
+        public void SetItemData(ItemSO item)
+        {
+            itemDescriptionView.SetItemData(item);
         }
     }
 }

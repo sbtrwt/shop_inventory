@@ -162,6 +162,10 @@ MonoBehaviour:
       - {fileID: 11400000, guid: ba705065df9b9c24dadff430acf1b8ea, type: 2}
       parent: {fileID: 0}
       itemContainerSO: {fileID: 11400000, guid: c8aa33823c8965546933196323ddceff, type: 2}
+    ItemDescriptionModel:
+      itemData: {fileID: 0}
+      parent: {fileID: 0}
+      itemDescriptionSO: {fileID: 11400000, guid: 03b953bb503967c44a1940e000775358, type: 2}
 --- !u!4 &489589922
 Transform:
   m_ObjectHideFlags: 0

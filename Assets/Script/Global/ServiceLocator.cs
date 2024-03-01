@@ -44,7 +44,7 @@ namespace ShopInventory.Global
         {
             itemService.InjectDependencies(eventService);
             itemContainerService.InjectDependencies(itemService);
-            shopService.InjectDependencies(itemContainerService);
+            shopService.InjectDependencies(itemContainerService, itemDescriptionService);
             itemDescriptionService.InjectDependencies(eventService);
         }
         public void Start()

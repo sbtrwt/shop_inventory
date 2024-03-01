@@ -23,6 +23,9 @@ namespace ShopInventory.Item
             itemDescriptionController = new ItemDescriptionController(itemDescriptionModel, eventService);
         }
 
-
+        public void SetParent(GameObject parent)
+        {
+            itemDescriptionController.SetParent(parent);
+        }
     }
 }
