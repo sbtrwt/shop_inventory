@@ -15,7 +15,7 @@ namespace ShopInventory.Item
         
         private void Awake()
         {
-            quantityText = transform.Find("Quantity").GetComponent<TextMeshPro>();
+            quantityText = transform.Find("Quantity").GetComponent<TMP_Text>();
             itemButton = transform.Find("Button").GetComponent<Button>();
             if (itemButton != null)
             {
