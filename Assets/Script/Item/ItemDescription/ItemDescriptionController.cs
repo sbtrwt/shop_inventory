@@ -7,7 +7,7 @@ namespace ShopInventory.Item
 {
     public class ItemDescriptionController
     {
-        private ItemSO itemData;
+        private ItemSO selectedItem;
         private EventService eventService;
         private ItemDescriptionView itemDescriptionView;
         private ItemDescriptionModel itemDescriptionModel;
@@ -35,7 +35,13 @@ namespace ShopInventory.Item
         }
         public void SetItemData(ItemSO item)
         {
+            selectedItem = item;
             itemDescriptionView.SetItemData(item);
+        }
+
+        public void OnActionButtonClick()
+        {
+            eventService.OnItemSell.InvokeEvent(selectedItem) ;
         }
     }
 }

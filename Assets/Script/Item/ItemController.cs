@@ -40,5 +40,9 @@ namespace ShopInventory.Item
         {
             eventService.OnItemClick.InvokeEvent(itemData);
         }
+        public void DestroyItemView()
+        {
+            GameObject.Destroy(itemView.gameObject);
+        }
     }
 }

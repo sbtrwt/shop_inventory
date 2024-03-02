@@ -9,14 +9,14 @@ namespace ShopInventory.Event
 
 
         public EventController<ItemSO> OnItemClick { get; private set; }
-        public EventController OnItemBuy { get; private set; }
-        public EventController OnItemSell { get; private set; }
+        public EventController<ItemSO> OnItemBuy { get; private set; }
+        public EventController<ItemSO> OnItemSell { get; private set; }
 
 
         public EventService()
         {
-            OnItemBuy = new EventController();
-            OnItemSell = new EventController();
+            OnItemBuy = new EventController<ItemSO>();
+            OnItemSell = new EventController<ItemSO>();
             OnItemClick = new EventController<ItemSO>();
         }
     }

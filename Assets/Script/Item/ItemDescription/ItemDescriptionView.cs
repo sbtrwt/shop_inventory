@@ -18,6 +18,7 @@ namespace ShopInventory.Item
         private TMP_Text textPrice;
         private TMP_Text textQuantity;
         private ItemSO itemData;
+        private TMP_Text textWeight;
         private void Start()
         {
             itemImage = transform.Find("ItemImage").GetComponent<Image>();
@@ -27,9 +28,12 @@ namespace ShopInventory.Item
             actionButton = transform.Find("ActionButton").GetComponent<Button>();
             removeButton = transform.Find("QuantityPanel/DeleteQuantity").GetComponent<Button>();
             addButton = transform.Find("QuantityPanel/AddQuantity").GetComponent<Button>();
+            textWeight = transform.Find("ItemWeight").GetComponent<TMP_Text>();
 
-            if(textDescription != null)
+            if (textDescription != null)
             { textDescription.text = "Test"; }
+            if (actionButton != null)
+            { actionButton.onClick.AddListener(OnActionButtonClick); }
         }
         public void SetParent(GameObject parent)
         {
@@ -55,6 +59,14 @@ namespace ShopInventory.Item
             { textQuantity.text = itemData.quantity.ToString(); }
             if (itemImage != null)
             { itemImage.sprite = itemData.icon; }
+            
+            if (textWeight != null)
+            { textWeight.text = $"Weight : {itemData.weight}"; }
+        }
+
+        public void OnActionButtonClick()
+        {
+            itemDescriptionController.OnActionButtonClick();
         }
     }
 }
