@@ -24,7 +24,7 @@ namespace ShopInventory.Item
         {
             itemView = Object.Instantiate(itemModel.itemSO.itemViewPrefab);
             itemView.SetController(this);
-            itemView.SetSprite(itemModel.itemSO.icon);
+            itemView.SetItemView(itemModel.itemSO);
         }
         public void SetParent(GameObject parent)
         {
@@ -43,6 +43,10 @@ namespace ShopInventory.Item
         public void DestroyItemView()
         {
             GameObject.Destroy(itemView.gameObject);
+        }
+        public void SetItemView(ItemSO item)
+        {
+            itemView.SetItemView(item);
         }
     }
 }

@@ -10,8 +10,6 @@ namespace ShopInventory.Global
     public class ServiceLocatorModel
     {
         public ShopModel ShopModel;
-        public ItemContainerModel ItemContainerModel;
-        public ItemDescriptionModel ItemDescriptionModel;
         public InventoryModel InventoryModel;
     }
 }

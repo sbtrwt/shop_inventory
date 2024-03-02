@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using ShopInventory.Item;
+using ShopInventory.Event;
 
 namespace ShopInventory.Inventory
 {
@@ -11,15 +8,21 @@ namespace ShopInventory.Inventory
         private InventoryController inventoryController;
         private ItemContainerService itemContainerService;
         private ItemDescriptionService itemDescriptionService;
-
+        private EventService eventService;
+        private ItemService itemService;
         public InventoryService(InventoryModel model)
         {
             inventoryController = new InventoryController(model);
         }
-        public void InjectDependencies(ItemContainerService itemContainerService, ItemDescriptionService itemDescriptionService)
+       
+        public void InjectDependencies(ItemContainerService itemContainerService, ItemDescriptionService itemDescriptionService, EventService eventService, ItemService itemService)
         {
             this.itemContainerService = itemContainerService;
             this.itemDescriptionService = itemDescriptionService;
+            this.eventService = eventService;
+            this.itemService = itemService;
+            this.eventService.OnItemSell.AddListener(this.itemService.OnActionRemove);
+            this.eventService.OnItemBuy.AddListener(this.itemService.OnActionAdd);
         }
         public void Start()
         {
@@ -27,6 +30,7 @@ namespace ShopInventory.Inventory
             itemContainerService.SetParent(inventoryController.GetViewObject());
 
             itemDescriptionService.SetParent(inventoryController.GetViewObject());
+            itemDescriptionService.SetItemAction(ItemAction.Sell);
         }
 
     }

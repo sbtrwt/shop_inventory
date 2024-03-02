@@ -1,4 +1,5 @@
 ﻿
+using ShopInventory.Item;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,5 +12,7 @@ namespace ShopInventory.Shop
         public ShopSO shopSO;
         public GameObject canvas;
         public Button shopButton;
+        public ItemContainerModel ItemContainerModel;
+        public ItemDescriptionModel ItemDescriptionModel;
     }
 }

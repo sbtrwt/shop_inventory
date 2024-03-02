@@ -21,10 +21,10 @@ namespace ShopInventory.Item
         public void InjectDependencies(EventService eventService)
         {
             this.eventService = eventService;
-            this.eventService.OnItemSell.AddListener(OnActionSell);
         }
         public void InitController(List<ItemSO> allItems, GameObject parent)
         {
+            this.parent = parent;
             this.allItems = allItems;
             allItemControllers = new Dictionary<int , ItemController>();
             if(allItems != null)
@@ -69,6 +69,26 @@ namespace ShopInventory.Item
                 allItems = new List<ItemSO>();
             allItems.Add(item);
         }
+        public void AddControllerByItem(ItemSO item)
+        {
+            if (allItemControllers == null)
+                allItemControllers = new Dictionary<int, ItemController>();
+            if (allItemControllers.ContainsKey(item.ID))
+            {
+                item.quantity += 1;
+                allItemControllers[item.ID].SetItemView(item);
+            }
+            else
+            {
+                var newItemController = new ItemController(new ItemModel
+                {
+                    itemSO = item,
+                    parent = parent
+                }, eventService);
+                newItemController.SetParent(parent);
+                allItemControllers.Add(item.ID, newItemController);
+            }
+        }
 
         public void RemoveItem(ItemSO item)
         {
@@ -87,7 +107,12 @@ namespace ShopInventory.Item
                 }
             }
         }
-        public void OnActionSell(ItemSO item)
+        public void OnActionAdd(ItemSO item)
+        {
+            AddNewItem(item);
+            AddControllerByItem(item);
+        }
+        public void OnActionRemove(ItemSO item)
         {
             RemoveItem(item);
             RemoveControllerByID(item.ID);

@@ -27,5 +27,10 @@ namespace ShopInventory.Item
         {
             itemDescriptionController.SetParent(parent);
         }
+
+        public void SetItemAction(ItemAction itemAction)
+        {
+            itemDescriptionController.SetItemAction(itemAction);
+        }
     }
 }

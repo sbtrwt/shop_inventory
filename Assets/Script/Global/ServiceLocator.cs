@@ -43,14 +43,14 @@ namespace ShopInventory.Global
             shopService = new ShopService(data.ShopModel);
             inventoryService = new InventoryService(data.InventoryModel);
             //Shop services
-            shopItemContainerService = new ItemContainerService(data.ItemContainerModel);
+            shopItemContainerService = new ItemContainerService(data.ShopModel.ItemContainerModel);
             shopItemService = new ItemService();
-            shopItemDescriptionService = new ItemDescriptionService(data.ItemDescriptionModel);
+            shopItemDescriptionService = new ItemDescriptionService(data.ShopModel.ItemDescriptionModel);
 
             //Shop services
-            inventoryItemContainerService = new ItemContainerService(data.ItemContainerModel);
+            inventoryItemContainerService = new ItemContainerService(data.InventoryModel.ItemContainerModel);
             inventoryItemService = new ItemService();
-            inventoryItemDescriptionService = new ItemDescriptionService(data.ItemDescriptionModel);
+            inventoryItemDescriptionService = new ItemDescriptionService(data.InventoryModel.ItemDescriptionModel);
         }
 
         private void InjectDependencies()
@@ -58,13 +58,13 @@ namespace ShopInventory.Global
             //Shop injection
             shopItemService.InjectDependencies(eventService);
             shopItemContainerService.InjectDependencies(shopItemService);
-            shopService.InjectDependencies(shopItemContainerService, shopItemDescriptionService);
+            shopService.InjectDependencies(shopItemContainerService, shopItemDescriptionService, eventService, shopItemService);
             shopItemDescriptionService.InjectDependencies(eventService);
 
             //Inventory injection
             inventoryItemService.InjectDependencies(eventService);
             inventoryItemContainerService.InjectDependencies(inventoryItemService);
-            inventoryService.InjectDependencies(inventoryItemContainerService, inventoryItemDescriptionService);
+            inventoryService.InjectDependencies(inventoryItemContainerService, inventoryItemDescriptionService, eventService, inventoryItemService);
             inventoryItemDescriptionService.InjectDependencies(eventService);
         }
         public void Start()

@@ -12,6 +12,7 @@ namespace ShopInventory.Item
         private ItemDescriptionView itemDescriptionView;
         private ItemDescriptionModel itemDescriptionModel;
         private GameObject parent;
+        private ItemAction itemAction;
         public ItemDescriptionController(ItemDescriptionModel model, EventService eventService)
         {
             this.eventService = eventService;
@@ -38,10 +39,24 @@ namespace ShopInventory.Item
             selectedItem = item;
             itemDescriptionView.SetItemData(item);
         }
-
+        public void SetItemAction(ItemAction itemAction)
+        {
+            this.itemAction = itemAction;
+        }
         public void OnActionButtonClick()
         {
-            eventService.OnItemSell.InvokeEvent(selectedItem) ;
+            switch (itemAction)
+            {
+                case ItemAction.Buy:
+                    eventService.OnItemBuy.InvokeEvent(selectedItem);
+                    break;
+                case ItemAction.Sell:
+                    eventService.OnItemSell.InvokeEvent(selectedItem);
+                    break;
+                default:
+                eventService.OnItemSell.InvokeEvent(selectedItem) ;
+                    break;
+            }
         }
     }
 }

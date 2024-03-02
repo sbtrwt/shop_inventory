@@ -154,22 +154,30 @@ MonoBehaviour:
       shopSO: {fileID: 11400000, guid: ae9b71475c4db214ab15726f7d88b73d, type: 2}
       canvas: {fileID: 1713997774}
       shopButton: {fileID: 5051259697697934721, guid: d66252692a2ef2c4aaebe1530ee6d2c0, type: 3}
-    ItemContainerModel:
-      allItems:
-      - {fileID: 11400000, guid: 718f591660310ee42bdea8e8f957e379, type: 2}
-      - {fileID: 11400000, guid: 1f0f2b28be6f76a4b962e08a4379f40d, type: 2}
-      - {fileID: 11400000, guid: 0becabc03ee58e14b80ab6ceddc7d0b8, type: 2}
-      - {fileID: 11400000, guid: ba705065df9b9c24dadff430acf1b8ea, type: 2}
-      parent: {fileID: 0}
-      itemContainerSO: {fileID: 11400000, guid: c8aa33823c8965546933196323ddceff, type: 2}
-    ItemDescriptionModel:
-      itemData: {fileID: 0}
-      parent: {fileID: 0}
-      itemDescriptionSO: {fileID: 11400000, guid: 03b953bb503967c44a1940e000775358, type: 2}
+      ItemContainerModel:
+        allItems:
+        - {fileID: 11400000, guid: 718f591660310ee42bdea8e8f957e379, type: 2}
+        - {fileID: 11400000, guid: 1f0f2b28be6f76a4b962e08a4379f40d, type: 2}
+        parent: {fileID: 0}
+        itemContainerSO: {fileID: 11400000, guid: c8aa33823c8965546933196323ddceff, type: 2}
+      ItemDescriptionModel:
+        itemData: {fileID: 0}
+        parent: {fileID: 0}
+        itemDescriptionSO: {fileID: 11400000, guid: 03b953bb503967c44a1940e000775358, type: 2}
     InventoryModel:
       inventorySO: {fileID: 11400000, guid: 7ccd35421402aaa44867f331023b1787, type: 2}
       canvas: {fileID: 1713997774}
       toggleButton: {fileID: 1314926313254496328, guid: fba1c541d9bc7a443811e27f0d79a88e, type: 3}
+      ItemContainerModel:
+        allItems:
+        - {fileID: 11400000, guid: 0becabc03ee58e14b80ab6ceddc7d0b8, type: 2}
+        - {fileID: 11400000, guid: ba705065df9b9c24dadff430acf1b8ea, type: 2}
+        parent: {fileID: 0}
+        itemContainerSO: {fileID: 11400000, guid: c8aa33823c8965546933196323ddceff, type: 2}
+      ItemDescriptionModel:
+        itemData: {fileID: 0}
+        parent: {fileID: 0}
+        itemDescriptionSO: {fileID: 11400000, guid: 53003a995ebd35346bf4ed9674577785, type: 2}
 --- !u!4 &489589922
 Transform:
   m_ObjectHideFlags: 0

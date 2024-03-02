@@ -5,6 +5,7 @@ namespace ShopInventory.Item
 {
     public enum ItemType { Material, Weapon, Consumable, Treasure }
     public enum ItemRarity { VeryCommon, Common, Rare, Epic, Legendary }
+    public enum ItemAction { Buy, Sell }
 
     [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
     public class ItemSO : ScriptableObject
