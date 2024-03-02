@@ -16,7 +16,7 @@ namespace ShopInventory.Item
         private EventService eventService;
         public ItemService()
         {
-                
+
         }
         public void InjectDependencies(EventService eventService)
         {
@@ -26,21 +26,22 @@ namespace ShopInventory.Item
         {
             this.parent = parent;
             this.allItems = allItems;
-            allItemControllers = new Dictionary<int , ItemController>();
-            if(allItems != null)
+            allItemControllers = new Dictionary<int, ItemController>();
+            if (allItems != null)
             {
-                foreach(var item in allItems)
+                foreach (var item in allItems)
                 {
-                    allItemControllers.Add(item.ID, new ItemController(new ItemModel { 
-                         itemSO = item,
-                         parent = parent
+                    allItemControllers.Add(item.ID, new ItemController(new ItemModel
+                    {
+                        itemSO = item,
+                        parent = parent
                     }, eventService));
                 }
             }
         }
         public void SetItemParent(GameObject parent)
         {
-            
+
             if (allItemControllers != null)
             {
                 foreach (var i in allItemControllers)
@@ -75,8 +76,10 @@ namespace ShopInventory.Item
                 allItemControllers = new Dictionary<int, ItemController>();
             if (allItemControllers.ContainsKey(item.ID))
             {
-                item.quantity += 1;
-                allItemControllers[item.ID].SetItemView(item);
+                ItemSO tempItem = allItemControllers[item.ID].GetItemData();
+                tempItem.quantity += item.actionQuantity;
+                allItemControllers[item.ID].SetItemData(tempItem);
+                allItemControllers[item.ID].SetItemView(tempItem);
             }
             else
             {
@@ -98,9 +101,9 @@ namespace ShopInventory.Item
         }
         public void RemoveControllerByID(int id)
         {
-            if(allItemControllers != null && allItemControllers.Count > 0)
+            if (allItemControllers != null && allItemControllers.Count > 0)
             {
-               if(allItemControllers.ContainsKey(id))
+                if (allItemControllers.ContainsKey(id))
                 {
                     allItemControllers[id].DestroyItemView();
                     allItemControllers.Remove(id);
@@ -114,8 +117,26 @@ namespace ShopInventory.Item
         }
         public void OnActionRemove(ItemSO item)
         {
-            RemoveItem(item);
-            RemoveControllerByID(item.ID);
+            if (allItemControllers != null && allItemControllers.Count > 0)
+            {
+                if (allItemControllers.ContainsKey(item.ID))
+                {
+                    ItemSO tempItem = allItemControllers[item.ID].GetItemData();
+                    if (tempItem.quantity >= item.quantity)
+                    {
+                        tempItem.quantity -= item.actionQuantity;
+                        allItemControllers[item.ID].SetItemData(tempItem);
+                        allItemControllers[item.ID].SetItemView(tempItem);
+                    }
+
+                    if (tempItem.quantity <= 0)
+                    {
+                        RemoveItem(item);
+                        RemoveControllerByID(item.ID);
+
+                    }
+                }
+            }
         }
     }
 }

@@ -35,6 +35,10 @@ namespace ShopInventory.Item
         {
             return itemModel.itemSO;
         }
+        public void SetItemData(ItemSO item)
+        {
+             itemModel.itemSO = item;
+        }
 
         public void OnItemClick(ItemSO itemData)
         {

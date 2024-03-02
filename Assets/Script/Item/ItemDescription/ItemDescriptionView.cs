@@ -34,6 +34,10 @@ namespace ShopInventory.Item
             { textDescription.text = "Test"; }
             if (actionButton != null)
             { actionButton.onClick.AddListener(OnActionButtonClick); }
+            if (addButton != null)
+            { addButton.onClick.AddListener(OnAddQuantityButtonClick); }
+            if (removeButton != null)
+            { removeButton.onClick.AddListener(OnRemoveQuantityButtonClick); }
         }
         public void SetParent(GameObject parent)
         {
@@ -67,6 +71,19 @@ namespace ShopInventory.Item
         public void OnActionButtonClick()
         {
             itemDescriptionController.OnActionButtonClick();
+        }
+        public void OnAddQuantityButtonClick()
+        {
+            itemDescriptionController.OnAddQuantity();
+        }
+        public void OnRemoveQuantityButtonClick()
+        {
+            itemDescriptionController.OnRemoveQuantity();
+        }
+        public void SetQuantity(float quantity)
+        {
+            if (textQuantity != null)
+            { textQuantity.text = quantity.ToString(); }
         }
     }
 }

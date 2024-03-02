@@ -20,6 +20,21 @@ namespace ShopInventory.Item
         public ItemRarity rarity;
         public float quantity;
         public ItemView itemViewPrefab;
-
+        public float actionQuantity;
+        public ItemSO() { }
+        public void Clone( ItemSO item)
+        {
+            ID = item.ID;
+            type = item.type;
+            icon = item.icon;
+            description = item.description;
+            buyPrice = item.buyPrice;
+            sellPrice = item.sellPrice;
+            weight = item.weight;
+            rarity = item.rarity;
+            quantity = item.quantity;
+            itemViewPrefab = item.itemViewPrefab;
+            actionQuantity = item.actionQuantity;
+        }
     }
 }
