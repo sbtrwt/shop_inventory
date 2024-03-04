@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace ShopInventory.Item
 {
-    public enum ItemType { Material, Weapon, Consumable, Treasure }
-    public enum ItemRarity { VeryCommon, Common, Rare, Epic, Legendary }
+    public enum ItemType {None, Material, Weapon, Consumable, Treasure }
+    public enum ItemRarity {None, VeryCommon, Common, Rare, Epic, Legendary }
     public enum ItemAction { Buy, Sell }
 
     [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
@@ -21,6 +21,7 @@ namespace ShopInventory.Item
         public float quantity;
         public ItemView itemViewPrefab;
         public float actionQuantity;
+        public string shortName;
         public ItemSO() { }
         public void Clone( ItemSO item)
         {
@@ -35,6 +36,7 @@ namespace ShopInventory.Item
             quantity = item.quantity;
             itemViewPrefab = item.itemViewPrefab;
             actionQuantity = item.actionQuantity;
+            shortName = item.shortName;
         }
     }
 }

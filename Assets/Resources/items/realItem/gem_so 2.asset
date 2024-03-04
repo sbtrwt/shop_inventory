@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af67f89d9ce22974fa2e2549c02c5f61, type: 3}
-  m_Name: health_potion_so
+  m_Name: gem_so 2
   m_EditorClassIdentifier: 
-  ID: 2
-  type: 2
-  icon: {fileID: -1480671407, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
-  description: This is health potion. give health 5-10.
-  buyPrice: 3
-  sellPrice: 3
-  weight: 1
-  rarity: 0
-  quantity: 5
+  ID: 3
+  type: 4
+  icon: {fileID: 1404232604, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
+  description: This is gem.
+  buyPrice: 5
+  sellPrice: 5
+  weight: 2
+  rarity: 2
+  quantity: 4
   itemViewPrefab: {fileID: -63324163324435147, guid: 2154274d07718db429614e69c164132f, type: 3}
-  actionQuantity: 2
+  actionQuantity: 5
+  shortName: Gem

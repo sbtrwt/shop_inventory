@@ -21,7 +21,7 @@ namespace ShopInventory.Item
         public void InitItemContainer()
         {
             itemService.InitController(itemContainerModel.allItems, itemContainerController.GetViewObject());
-           
+            itemService.SetAllSelectableItems(itemContainerModel.allSelectableItems);
         }
 
         public void SetParent(GameObject parent)

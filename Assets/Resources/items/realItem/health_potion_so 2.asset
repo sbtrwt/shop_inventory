@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af67f89d9ce22974fa2e2549c02c5f61, type: 3}
-  m_Name: shirt_so
+  m_Name: health_potion_so 2
   m_EditorClassIdentifier: 
-  ID: 3
-  type: 0
-  icon: {fileID: -1854050275, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
-  description: This is cloth.
-  buyPrice: 2
-  sellPrice: 2
+  ID: 7
+  type: 3
+  icon: {fileID: 1766731465, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
+  description: This is health potion. give health 5-10.
+  buyPrice: 3
+  sellPrice: 3
   weight: 1
   rarity: 0
-  quantity: 6
+  quantity: 5
   itemViewPrefab: {fileID: -63324163324435147, guid: 2154274d07718db429614e69c164132f, type: 3}
-  actionQuantity: 5
+  actionQuantity: 2
+  shortName: Potion

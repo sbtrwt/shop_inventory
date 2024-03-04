@@ -13,5 +13,6 @@ namespace ShopInventory.Inventory
         public Button toggleButton;
         public ItemContainerModel ItemContainerModel;
         public ItemDescriptionModel ItemDescriptionModel;
+        public ItemFilterModel ItemFilterModel;
     }
 }

@@ -35,8 +35,8 @@ public class MessageUIController
    
 
 
-    public void OnActionSell(ItemSO item) { SetMessage($"{item.actionQuantity} item sold"); }
-    public void OnActionBuy(ItemSO item) { SetMessage($"{item.actionQuantity} item bought"); }
+    public void OnActionSell(ItemSO item) { SetMessage($"{item.actionQuantity} {item.shortName} item sold"); }
+    public void OnActionBuy(ItemSO item) { SetMessage($"{item.actionQuantity} {item.shortName} item bought"); }
 
     public void SetMessage(string message) 
     { 

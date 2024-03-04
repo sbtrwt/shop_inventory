@@ -34,7 +34,7 @@ namespace ShopInventory.UI
             if (messageText != null)
             {
                 messageText.text = message;
-                StartCoroutine(ShowForSeconds(3));
+                StartCoroutine(ShowForSeconds(1.5f));
             }
         }
         IEnumerator ShowForSeconds(float sec)

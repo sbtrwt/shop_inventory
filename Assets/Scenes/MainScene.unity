@@ -165,6 +165,10 @@ MonoBehaviour:
         itemData: {fileID: 0}
         parent: {fileID: 0}
         itemDescriptionSO: {fileID: 11400000, guid: 03b953bb503967c44a1940e000775358, type: 2}
+      ItemFilterModel:
+        itemData: {fileID: 0}
+        parent: {fileID: 0}
+        itemFilterSO: {fileID: 11400000, guid: f9ec04dc686301a49a1a4147989e093e, type: 2}
     InventoryModel:
       inventorySO: {fileID: 11400000, guid: 7ccd35421402aaa44867f331023b1787, type: 2}
       canvas: {fileID: 1713997774}
@@ -200,6 +204,10 @@ MonoBehaviour:
         itemData: {fileID: 0}
         parent: {fileID: 0}
         itemDescriptionSO: {fileID: 11400000, guid: 53003a995ebd35346bf4ed9674577785, type: 2}
+      ItemFilterModel:
+        itemData: {fileID: 0}
+        parent: {fileID: 0}
+        itemFilterSO: {fileID: 11400000, guid: f9ec04dc686301a49a1a4147989e093e, type: 2}
     UIModel:
       uiSO: {fileID: 11400000, guid: 780b351775ec00041b410df7d16ad917, type: 2}
       parent: {fileID: 1713997774}

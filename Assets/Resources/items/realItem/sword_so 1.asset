@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af67f89d9ce22974fa2e2549c02c5f61, type: 3}
-  m_Name: material1_so
+  m_Name: sword_so 1
   m_EditorClassIdentifier: 
-  ID: 4
-  type: 0
-  icon: {fileID: -9040379542294886161, guid: fd19aa9e2065e5448ae57f1cae669ac2, type: 3}
-  description: This is a wooden sword. Give initial attack range 2-3.
+  ID: 18
+  type: 2
+  icon: {fileID: 2044190070, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
+  description: This is a sword.
   buyPrice: 2
   sellPrice: 2
   weight: 1
@@ -23,3 +23,4 @@ MonoBehaviour:
   quantity: 8
   itemViewPrefab: {fileID: -63324163324435147, guid: 2154274d07718db429614e69c164132f, type: 3}
   actionQuantity: 4
+  shortName: sword

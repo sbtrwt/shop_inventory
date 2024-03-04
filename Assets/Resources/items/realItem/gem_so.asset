@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af67f89d9ce22974fa2e2549c02c5f61, type: 3}
-  m_Name: sword_so 1
+  m_Name: gem_so
   m_EditorClassIdentifier: 
-  ID: 4
-  type: 1
-  icon: {fileID: 2044190070, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
-  description: This is a wooden sword. Give initial attack range 2-3.
-  buyPrice: 2
-  sellPrice: 2
-  weight: 1
-  rarity: 0
-  quantity: 8
+  ID: 1
+  type: 4
+  icon: {fileID: -1043782816, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
+  description: This is gem.
+  buyPrice: 5
+  sellPrice: 5
+  weight: 2
+  rarity: 2
+  quantity: 4
   itemViewPrefab: {fileID: -63324163324435147, guid: 2154274d07718db429614e69c164132f, type: 3}
-  actionQuantity: 4
+  actionQuantity: 5
+  shortName: Gem
