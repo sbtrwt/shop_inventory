@@ -83,13 +83,16 @@ namespace ShopInventory.Item
             }
             else
             {
-                var newItemController = new ItemController(new ItemModel
+                if (item.actionQuantity > 0)
                 {
-                    itemSO = item,
-                    parent = parent
-                }, eventService);
-                newItemController.SetParent(parent);
-                allItemControllers.Add(item.ID, newItemController);
+                    var newItemController = new ItemController(new ItemModel
+                    {
+                        itemSO = item,
+                        parent = parent
+                    }, eventService);
+                    newItemController.SetParent(parent);
+                    allItemControllers.Add(item.ID, newItemController);
+                }
             }
         }
 

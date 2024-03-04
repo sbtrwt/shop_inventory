@@ -1218,9 +1218,57 @@ PrefabInstance:
       propertyPath: m_text
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 640101927319148770, guid: 8c91a865f64bab04699f6331f8051e49, type: 3}
+      propertyPath: m_fontSize
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 640101927319148770, guid: 8c91a865f64bab04699f6331f8051e49, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113698530217612311, guid: 8c91a865f64bab04699f6331f8051e49, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113698530217612311, guid: 8c91a865f64bab04699f6331f8051e49, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113698530217612311, guid: 8c91a865f64bab04699f6331f8051e49, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -151
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315936811119680701, guid: 8c91a865f64bab04699f6331f8051e49, type: 3}
+      propertyPath: m_fontSize
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315936811119680701, guid: 8c91a865f64bab04699f6331f8051e49, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4979453195892577365, guid: 8c91a865f64bab04699f6331f8051e49, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4979453195892577365, guid: 8c91a865f64bab04699f6331f8051e49, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4979453195892577365, guid: 8c91a865f64bab04699f6331f8051e49, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 5415935411514360289, guid: 8c91a865f64bab04699f6331f8051e49, type: 3}
       propertyPath: m_Name
       value: QuantityPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004152193498077328, guid: 8c91a865f64bab04699f6331f8051e49, type: 3}
+      propertyPath: m_fontSize
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004152193498077328, guid: 8c91a865f64bab04699f6331f8051e49, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
