@@ -16,7 +16,7 @@ namespace ShopInventory.Global
         private PlayerService playerService;
         private ShopService shopService;
         private InventoryService inventoryService;
-
+        private UIService uIService;
         //Shop component services
         private ItemContainerService shopItemContainerService;
         private ItemDescriptionService shopItemDescriptionService;
@@ -51,21 +51,29 @@ namespace ShopInventory.Global
             inventoryItemContainerService = new ItemContainerService(data.InventoryModel.ItemContainerModel);
             inventoryItemService = new ItemService();
             inventoryItemDescriptionService = new ItemDescriptionService(data.InventoryModel.ItemDescriptionModel);
+
+            //UI service
+            uiService = new UIService(data.UIModel);
+        
         }
 
         private void InjectDependencies()
         {
+            playerService.InjectDependencies(eventService);
             //Shop injection
             shopItemService.InjectDependencies(eventService);
             shopItemContainerService.InjectDependencies(shopItemService);
             shopService.InjectDependencies(shopItemContainerService, shopItemDescriptionService, eventService, shopItemService);
-            shopItemDescriptionService.InjectDependencies(eventService);
+            shopItemDescriptionService.InjectDependencies(eventService, playerService);
 
             //Inventory injection
             inventoryItemService.InjectDependencies(eventService);
             inventoryItemContainerService.InjectDependencies(inventoryItemService);
             inventoryService.InjectDependencies(inventoryItemContainerService, inventoryItemDescriptionService, eventService, inventoryItemService);
-            inventoryItemDescriptionService.InjectDependencies(eventService);
+            inventoryItemDescriptionService.InjectDependencies(eventService, playerService);
+
+            //UI service injection
+            uiService.InjectDependencies(eventService);
         }
         public void Start()
         {

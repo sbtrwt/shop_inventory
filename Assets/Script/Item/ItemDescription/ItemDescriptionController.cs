@@ -1,4 +1,5 @@
 using ShopInventory.Event;
+using ShopInventory.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +15,10 @@ namespace ShopInventory.Item
         private GameObject parent;
         private ItemAction itemAction;
         private float itemQuantity;
-        public ItemDescriptionController(ItemDescriptionModel model, EventService eventService)
+        private PlayerService playerService;
+        public ItemDescriptionController(ItemDescriptionModel model, EventService eventService, PlayerService playerService)
         {
+            this.playerService = playerService;
             this.eventService = eventService;
             itemDescriptionModel = model;
             InitView();
@@ -48,16 +51,27 @@ namespace ShopInventory.Item
         }
         public void OnActionButtonClick()
         {
+            if (itemQuantity == 0) { return; }
+
             selectedItem.actionQuantity = itemQuantity;
             ItemSO tempSO = ScriptableObject.CreateInstance<ItemSO>();
             tempSO.Clone(selectedItem);
             tempSO.quantity = itemQuantity;
+            int cost = 0;
             switch (itemAction)
             {
                 case ItemAction.Buy:
-                    eventService.OnItemBuy.InvokeEvent(tempSO);
+                    //Check gold to buy
+                    cost =(int)(itemQuantity * tempSO.buyPrice);
+                    if(cost <= playerService.GetGold())
+                    {
+                        playerService.AddGold(-cost);
+                        eventService.OnItemBuy.InvokeEvent(tempSO);
+                    }
                     break;
                 case ItemAction.Sell:
+                    cost = (int)(itemQuantity * tempSO.sellPrice);
+                    playerService.AddGold(cost);
                     eventService.OnItemSell.InvokeEvent(tempSO);
                     break;
                 default:
@@ -80,5 +94,7 @@ namespace ShopInventory.Item
             if (itemQuantity < 0) itemQuantity = 0;
             itemDescriptionView.SetQuantity(itemQuantity);
         }
+
+        
     }
 }

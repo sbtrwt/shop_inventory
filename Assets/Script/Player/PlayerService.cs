@@ -20,7 +20,8 @@ namespace ShopInventory.Player
 
         public void AddGold(int gold)
         {
-            gold += gold;
+            this.gold += gold;
+            eventService.OnGoldChange.InvokeEvent(this.gold);
         }
 
         public int GetGold()

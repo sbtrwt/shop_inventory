@@ -1,6 +1,7 @@
 ﻿using ShopInventory.Inventory;
 using ShopInventory.Item;
 using ShopInventory.Shop;
+using ShopInventory.UI;
 using System;
 
 
@@ -11,5 +12,6 @@ namespace ShopInventory.Global
     {
         public ShopModel ShopModel;
         public InventoryModel InventoryModel;
+        public UIModel UIModel;
     }
 }

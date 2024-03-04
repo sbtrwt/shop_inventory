@@ -20,6 +20,6 @@ MonoBehaviour:
   sellPrice: 2
   weight: 1
   rarity: 0
-  quantity: 5
+  quantity: 6
   itemViewPrefab: {fileID: -63324163324435147, guid: 2154274d07718db429614e69c164132f, type: 3}
-  actionQuantity: 0
+  actionQuantity: 5
