@@ -7,11 +7,13 @@ namespace ShopInventory.Item
 {
     public class ItemDescriptionController
     {
-        private ItemSO itemData;
+        private ItemSO selectedItem;
         private EventService eventService;
         private ItemDescriptionView itemDescriptionView;
         private ItemDescriptionModel itemDescriptionModel;
         private GameObject parent;
+        private ItemAction itemAction;
+        private float itemQuantity;
         public ItemDescriptionController(ItemDescriptionModel model, EventService eventService)
         {
             this.eventService = eventService;
@@ -35,7 +37,48 @@ namespace ShopInventory.Item
         }
         public void SetItemData(ItemSO item)
         {
+            selectedItem = item;
+            selectedItem.actionQuantity = item.quantity;
+            itemQuantity = item.quantity;
             itemDescriptionView.SetItemData(item);
+        }
+        public void SetItemAction(ItemAction itemAction)
+        {
+            this.itemAction = itemAction;
+        }
+        public void OnActionButtonClick()
+        {
+            selectedItem.actionQuantity = itemQuantity;
+            ItemSO tempSO = ScriptableObject.CreateInstance<ItemSO>();
+            tempSO.Clone(selectedItem);
+            tempSO.quantity = itemQuantity;
+            switch (itemAction)
+            {
+                case ItemAction.Buy:
+                    eventService.OnItemBuy.InvokeEvent(tempSO);
+                    break;
+                case ItemAction.Sell:
+                    eventService.OnItemSell.InvokeEvent(tempSO);
+                    break;
+                default:
+                eventService.OnItemSell.InvokeEvent(tempSO) ;
+                    break;
+            }
+        }
+        public void OnAddQuantity() 
+        { 
+            itemQuantity += 1;
+            if(selectedItem.quantity < itemQuantity)
+            {
+                itemQuantity = selectedItem.quantity;
+            }
+            itemDescriptionView.SetQuantity(itemQuantity);
+        }
+        public void OnRemoveQuantity()
+        {
+            itemQuantity -= 1;
+            if (itemQuantity < 0) itemQuantity = 0;
+            itemDescriptionView.SetQuantity(itemQuantity);
         }
     }
 }

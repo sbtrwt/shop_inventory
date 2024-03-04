@@ -1,17 +1,16 @@
-﻿
-using ShopInventory.Item;
+﻿using ShopInventory.Item;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ShopInventory.Shop
+namespace ShopInventory.Inventory
 {
     [Serializable]
-    public class ShopModel
+    public class InventoryModel
     {
-        public ShopSO shopSO;
+        public InventorySO inventorySO;
         public GameObject canvas;
-        public Button shopButton;
+        public Button toggleButton;
         public ItemContainerModel ItemContainerModel;
         public ItemDescriptionModel ItemDescriptionModel;
     }

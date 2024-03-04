@@ -16,9 +16,16 @@ namespace ShopInventory.Global
         private PlayerService playerService;
         private ShopService shopService;
         private InventoryService inventoryService;
-        private ItemContainerService itemContainerService;
-        private ItemService itemService;
-        private ItemDescriptionService itemDescriptionService;
+
+        //Shop component services
+        private ItemContainerService shopItemContainerService;
+        private ItemDescriptionService shopItemDescriptionService;
+        private ItemService shopItemService;
+
+        //Inventory component services
+        private ItemContainerService inventoryItemContainerService;
+        private ItemDescriptionService inventoryItemDescriptionService;
+        private ItemService inventoryItemService;
 
         [SerializeField] private UIService uiService;
 
@@ -34,22 +41,36 @@ namespace ShopInventory.Global
             eventService = new EventService();
             playerService = new PlayerService();
             shopService = new ShopService(data.ShopModel);
-            inventoryService = new InventoryService();
-            itemContainerService = new ItemContainerService(data.ItemContainerModel);
-            itemService = new ItemService();
-            itemDescriptionService = new ItemDescriptionService(data.ItemDescriptionModel);
+            inventoryService = new InventoryService(data.InventoryModel);
+            //Shop services
+            shopItemContainerService = new ItemContainerService(data.ShopModel.ItemContainerModel);
+            shopItemService = new ItemService();
+            shopItemDescriptionService = new ItemDescriptionService(data.ShopModel.ItemDescriptionModel);
+
+            //Shop services
+            inventoryItemContainerService = new ItemContainerService(data.InventoryModel.ItemContainerModel);
+            inventoryItemService = new ItemService();
+            inventoryItemDescriptionService = new ItemDescriptionService(data.InventoryModel.ItemDescriptionModel);
         }
 
         private void InjectDependencies()
         {
-            itemService.InjectDependencies(eventService);
-            itemContainerService.InjectDependencies(itemService);
-            shopService.InjectDependencies(itemContainerService, itemDescriptionService);
-            itemDescriptionService.InjectDependencies(eventService);
+            //Shop injection
+            shopItemService.InjectDependencies(eventService);
+            shopItemContainerService.InjectDependencies(shopItemService);
+            shopService.InjectDependencies(shopItemContainerService, shopItemDescriptionService, eventService, shopItemService);
+            shopItemDescriptionService.InjectDependencies(eventService);
+
+            //Inventory injection
+            inventoryItemService.InjectDependencies(eventService);
+            inventoryItemContainerService.InjectDependencies(inventoryItemService);
+            inventoryService.InjectDependencies(inventoryItemContainerService, inventoryItemDescriptionService, eventService, inventoryItemService);
+            inventoryItemDescriptionService.InjectDependencies(eventService);
         }
         public void Start()
         {
             shopService.Start();
+            inventoryService.Start();
         }
         public void Update()
         {
