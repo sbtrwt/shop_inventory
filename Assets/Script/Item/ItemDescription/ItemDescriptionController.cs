@@ -1,4 +1,6 @@
 using ShopInventory.Event;
+using ShopInventory.Player;
+using ShopInventory.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,12 +16,16 @@ namespace ShopInventory.Item
         private GameObject parent;
         private ItemAction itemAction;
         private float itemQuantity;
-        public ItemDescriptionController(ItemDescriptionModel model, EventService eventService)
+        private PlayerService playerService;
+        private UIService uIService;
+        public ItemDescriptionController(ItemDescriptionModel model, EventService eventService, PlayerService playerService, UIService uIService)
         {
+            this.playerService = playerService;
             this.eventService = eventService;
             itemDescriptionModel = model;
             InitView();
             this.eventService.OnItemClick.AddListener(SetItemData);
+            this.uIService = uIService;
         }
         public void InitView()
         {
@@ -48,37 +54,74 @@ namespace ShopInventory.Item
         }
         public void OnActionButtonClick()
         {
+            if (itemQuantity == 0) { return; }
+
             selectedItem.actionQuantity = itemQuantity;
             ItemSO tempSO = ScriptableObject.CreateInstance<ItemSO>();
             tempSO.Clone(selectedItem);
             tempSO.quantity = itemQuantity;
+            int cost = 0;
+            uIService.SetMessage("");
             switch (itemAction)
             {
                 case ItemAction.Buy:
-                    eventService.OnItemBuy.InvokeEvent(tempSO);
+                    //Check gold to buy
+                    cost =(int)(itemQuantity * tempSO.buyPrice);
+                    if(cost <= playerService.GetGold())
+                    {
+                        playerService.AddGold(-cost);
+                        eventService.OnItemBuy.InvokeEvent(tempSO);
+                        ResetItemData();
+                    }
+                    else
+                    {
+                        uIService.SetMessage("Not enough gold");
+                    }
                     break;
                 case ItemAction.Sell:
+                    cost = (int)(itemQuantity * tempSO.sellPrice);
+                    playerService.AddGold(cost);
                     eventService.OnItemSell.InvokeEvent(tempSO);
+                    ResetItemData();
                     break;
                 default:
-                eventService.OnItemSell.InvokeEvent(tempSO) ;
+                 //eventService.OnItemSell.InvokeEvent(tempSO) ;
                     break;
             }
         }
         public void OnAddQuantity() 
         { 
-            itemQuantity += 1;
-            if(selectedItem.quantity < itemQuantity)
+            if (selectedItem != null)
             {
-                itemQuantity = selectedItem.quantity;
+                itemQuantity += 1;
+                if (selectedItem.quantity < itemQuantity)
+                {
+                    itemQuantity = selectedItem.quantity;
+                }
+                itemDescriptionView.SetQuantity(itemQuantity);
             }
-            itemDescriptionView.SetQuantity(itemQuantity);
         }
         public void OnRemoveQuantity()
         {
             itemQuantity -= 1;
-            if (itemQuantity < 0) itemQuantity = 0;
+            if (itemQuantity < 1) itemQuantity = 1;
             itemDescriptionView.SetQuantity(itemQuantity);
+        }
+
+        public void ResetItemData()
+        {
+            ItemSO tempSO = ScriptableObject.CreateInstance<ItemSO>();
+            tempSO.Clone(selectedItem);
+            selectedItem = tempSO;
+            selectedItem.ID = 0;
+            selectedItem.icon = null;
+            selectedItem.quantity = 0;
+            selectedItem.description = "";
+            selectedItem.sellPrice = 0;
+            selectedItem.buyPrice = 0;
+            selectedItem.weight = 0;
+            itemQuantity = 0;
+            itemDescriptionView.SetItemData(selectedItem);
         }
     }
 }

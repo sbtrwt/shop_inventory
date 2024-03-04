@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af67f89d9ce22974fa2e2549c02c5f61, type: 3}
-  m_Name: health_potion_so
+  m_Name: material2_so
   m_EditorClassIdentifier: 
-  ID: 2
-  type: 2
-  icon: {fileID: -1480671407, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
-  description: This is health potion. give health 5-10.
-  buyPrice: 3
-  sellPrice: 3
+  ID: 10
+  type: 1
+  icon: {fileID: 1547687970728497341, guid: fd19aa9e2065e5448ae57f1cae669ac2, type: 3}
+  description: This is powder.
+  buyPrice: 2
+  sellPrice: 2
   weight: 1
   rarity: 0
-  quantity: 3
+  quantity: 8
   itemViewPrefab: {fileID: -63324163324435147, guid: 2154274d07718db429614e69c164132f, type: 3}
-  actionQuantity: 0
+  actionQuantity: 4
+  shortName: Powder

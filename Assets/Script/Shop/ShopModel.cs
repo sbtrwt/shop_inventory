@@ -14,5 +14,6 @@ namespace ShopInventory.Shop
         public Button shopButton;
         public ItemContainerModel ItemContainerModel;
         public ItemDescriptionModel ItemDescriptionModel;
+        public ItemFilterModel ItemFilterModel;
     }
 }

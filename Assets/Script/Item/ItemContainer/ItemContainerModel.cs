@@ -14,5 +14,6 @@ namespace ShopInventory.Item
         public List<ItemSO> allItems;
         public GameObject parent;
         public ItemContainerSO itemContainerSO;
+        public List<ItemSO> allSelectableItems;
     }
 }

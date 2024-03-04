@@ -30,7 +30,7 @@ namespace ShopInventory.Inventory
         {
             inventoryView.gameObject.SetActive(!inventoryView.gameObject.activeSelf);
         }
-        public void SellItem() { }
+        
 
         public GameObject GetViewObject()
         {

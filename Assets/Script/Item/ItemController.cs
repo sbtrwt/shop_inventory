@@ -52,5 +52,9 @@ namespace ShopInventory.Item
         {
             itemView.SetItemView(item);
         }
+        public void SetVisible(bool isShow)
+        {
+            itemView.gameObject.SetActive(isShow);
+        }
     }
 }

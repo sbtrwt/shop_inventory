@@ -1,4 +1,6 @@
 using ShopInventory.Event;
+using ShopInventory.Player;
+using ShopInventory.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,10 +19,10 @@ namespace ShopInventory.Item
             this.itemDescriptionModel = itemDescriptionModel;
         }
 
-        public void InjectDependencies(EventService eventService)
+        public void InjectDependencies(EventService eventService, PlayerService playerService, UIService uiService)
         {
             this.eventService = eventService;
-            itemDescriptionController = new ItemDescriptionController(itemDescriptionModel, eventService);
+            itemDescriptionController = new ItemDescriptionController(itemDescriptionModel, eventService, playerService, uiService);
         }
 
         public void SetParent(GameObject parent)

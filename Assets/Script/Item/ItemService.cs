@@ -1,4 +1,5 @@
 ﻿using ShopInventory.Event;
+using ShopInventory.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +12,21 @@ namespace ShopInventory.Item
     public class ItemService
     {
         private List<ItemSO> allItems;
+        private List<ItemSO> allSelectableItems;
+
         private Dictionary<int, ItemController> allItemControllers;
         private GameObject parent;
         private EventService eventService;
+        private UIService uiService;
         public ItemService()
         {
 
         }
-        public void InjectDependencies(EventService eventService)
+        public void InjectDependencies(EventService eventService, UIService uiService)
         {
             this.eventService = eventService;
+            this.uiService = uiService;
+            this.eventService.OnItemFilter.AddListener(OnFilterByItemType);
         }
         public void InitController(List<ItemSO> allItems, GameObject parent)
         {
@@ -31,6 +37,9 @@ namespace ShopInventory.Item
             {
                 foreach (var item in allItems)
                 {
+
+                    if (item.quantity == 0) item.quantity = 1;
+
                     allItemControllers.Add(item.ID, new ItemController(new ItemModel
                     {
                         itemSO = item,
@@ -72,6 +81,7 @@ namespace ShopInventory.Item
         }
         public void AddControllerByItem(ItemSO item)
         {
+            if (item == null) return;
             if (allItemControllers == null)
                 allItemControllers = new Dictionary<int, ItemController>();
             if (allItemControllers.ContainsKey(item.ID))
@@ -139,6 +149,38 @@ namespace ShopInventory.Item
 
                     }
                 }
+            }
+        }
+        public void SetAllSelectableItems(List<ItemSO> allSelectableItems)
+        {
+            this.allSelectableItems = allSelectableItems;
+        }
+        public void OnMining()
+        {
+            ItemSO item = GetRandomItem();
+            uiService.SetMessage($"You got { item.actionQuantity } { item.shortName }");
+            AddControllerByItem(item);
+        }
+        public ItemSO GetRandomItem()
+        {
+            if (allSelectableItems != null && allSelectableItems.Count > 0)
+            {
+                ItemSO tempItem = ScriptableObject.CreateInstance<ItemSO>();
+                int index = UnityEngine.Random.Range(0, allSelectableItems.Count);
+                tempItem.Clone(this.allSelectableItems[index]);
+                int quantity = UnityEngine.Random.Range(1, 5);
+                tempItem.actionQuantity = quantity;
+                tempItem.quantity = quantity;
+                return tempItem;
+            }
+            else
+                return null;
+        }
+        public void OnFilterByItemType(ItemType type)
+        {
+            foreach (var itemCtrl in allItemControllers)
+            {
+                itemCtrl.Value.SetVisible((type == ItemType.None) || (itemCtrl.Value.GetItemData().type == type));
             }
         }
     }

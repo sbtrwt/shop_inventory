@@ -13,12 +13,17 @@ namespace ShopInventory.Event
         public EventController<ItemSO> OnItemSell { get; private set; }
 
         public EventController<int> OnGoldChange { get; private set; }
+        public EventController OnMining { get; private set; }
+
+        public EventController<ItemType> OnItemFilter { get; private set; }
         public EventService()
         {
             OnItemBuy = new EventController<ItemSO>();
             OnItemSell = new EventController<ItemSO>();
             OnItemClick = new EventController<ItemSO>();
             OnGoldChange = new EventController<int>();
+            OnMining = new EventController();
+            OnItemFilter = new EventController<ItemType>();
         }
     }
 }
