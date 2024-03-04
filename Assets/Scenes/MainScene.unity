@@ -160,6 +160,7 @@ MonoBehaviour:
         - {fileID: 11400000, guid: 1f0f2b28be6f76a4b962e08a4379f40d, type: 2}
         parent: {fileID: 0}
         itemContainerSO: {fileID: 11400000, guid: c8aa33823c8965546933196323ddceff, type: 2}
+        allSelectableItems: []
       ItemDescriptionModel:
         itemData: {fileID: 0}
         parent: {fileID: 0}
@@ -174,6 +175,27 @@ MonoBehaviour:
         - {fileID: 11400000, guid: ba705065df9b9c24dadff430acf1b8ea, type: 2}
         parent: {fileID: 0}
         itemContainerSO: {fileID: 11400000, guid: c8aa33823c8965546933196323ddceff, type: 2}
+        allSelectableItems:
+        - {fileID: 11400000, guid: 718f591660310ee42bdea8e8f957e379, type: 2}
+        - {fileID: 11400000, guid: d6a3b13c355e0044aab053b83118bb27, type: 2}
+        - {fileID: 11400000, guid: 182e5a61d558388458dbeea556d8fa28, type: 2}
+        - {fileID: 11400000, guid: c65caf85d1eba204798f6f9b378b8463, type: 2}
+        - {fileID: 11400000, guid: 1f0f2b28be6f76a4b962e08a4379f40d, type: 2}
+        - {fileID: 11400000, guid: e67e8601c4b3d1245ad46b0226147358, type: 2}
+        - {fileID: 11400000, guid: 3b83df275b9799d4aacdba8356ee974d, type: 2}
+        - {fileID: 11400000, guid: 6dbf74bc2ed13a341b6bef1fdfd1cfa3, type: 2}
+        - {fileID: 11400000, guid: 8b00da6e74b9fb4418ec1220b3deadda, type: 2}
+        - {fileID: 11400000, guid: 7e2e39148eea206418744319c86ff1c6, type: 2}
+        - {fileID: 11400000, guid: e032ffefd08c3ff43a20b48687c1fe78, type: 2}
+        - {fileID: 11400000, guid: 1779c9325d95f0a4f8b4133a64359fc4, type: 2}
+        - {fileID: 11400000, guid: 0becabc03ee58e14b80ab6ceddc7d0b8, type: 2}
+        - {fileID: 11400000, guid: 36d2308d6df664a448b6d50c24685c56, type: 2}
+        - {fileID: 11400000, guid: ba6518ed57b402842a57dfeba8893d30, type: 2}
+        - {fileID: 11400000, guid: b45490ed912f8b446ac99a65a6c01665, type: 2}
+        - {fileID: 11400000, guid: ba705065df9b9c24dadff430acf1b8ea, type: 2}
+        - {fileID: 11400000, guid: 85345c7ddfb084048af5d45178b92b22, type: 2}
+        - {fileID: 11400000, guid: cff976883a6f741468fb318d9a3f5f2c, type: 2}
+        - {fileID: 11400000, guid: d259d34edf32aaa4bb3e09228d952c21, type: 2}
       ItemDescriptionModel:
         itemData: {fileID: 0}
         parent: {fileID: 0}

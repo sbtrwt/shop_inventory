@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   playerUIView: {fileID: 4359570241364820921, guid: 34ff2e1f984586742a18da9e348ebd6a, type: 3}
-  messageUIView: {fileID: 0}
+  messageUIView: {fileID: 4515898201570221415, guid: 127108b967c3513498fb211097963d0c, type: 3}

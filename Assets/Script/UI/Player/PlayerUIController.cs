@@ -35,5 +35,9 @@ namespace ShopInventory.UI
         {
             playerUIView.SetGoldText(gold);
         }
+        public void Mining() 
+        {
+            eventService.OnMining.InvokeEvent();
+        }
     }
 }

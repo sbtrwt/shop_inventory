@@ -19,6 +19,11 @@ namespace ShopInventory.UI
         {
             this.eventService = eventService;
             playerUIController = new PlayerUIController(uiModel, this.eventService);
+            messageUIController = new MessageUIController(uiModel, this.eventService);
+        }
+        public void SetMessage(string message)
+        {
+            messageUIController.SetMessage(message);
         }
     }
 }

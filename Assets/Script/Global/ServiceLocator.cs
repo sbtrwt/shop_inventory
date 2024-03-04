@@ -64,13 +64,13 @@ namespace ShopInventory.Global
             shopItemService.InjectDependencies(eventService);
             shopItemContainerService.InjectDependencies(shopItemService);
             shopService.InjectDependencies(shopItemContainerService, shopItemDescriptionService, eventService, shopItemService);
-            shopItemDescriptionService.InjectDependencies(eventService, playerService);
+            shopItemDescriptionService.InjectDependencies(eventService, playerService, uiService);
 
             //Inventory injection
             inventoryItemService.InjectDependencies(eventService);
             inventoryItemContainerService.InjectDependencies(inventoryItemService);
             inventoryService.InjectDependencies(inventoryItemContainerService, inventoryItemDescriptionService, eventService, inventoryItemService);
-            inventoryItemDescriptionService.InjectDependencies(eventService, playerService);
+            inventoryItemDescriptionService.InjectDependencies(eventService, playerService, uiService);
 
             //UI service injection
             uiService.InjectDependencies(eventService);

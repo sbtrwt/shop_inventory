@@ -23,6 +23,7 @@ namespace ShopInventory.Inventory
             this.itemService = itemService;
             this.eventService.OnItemSell.AddListener(this.itemService.OnActionRemove);
             this.eventService.OnItemBuy.AddListener(this.itemService.OnActionAdd);
+            this.eventService.OnMining.AddListener(this.itemService.OnMining);
         }
         public void Start()
         {

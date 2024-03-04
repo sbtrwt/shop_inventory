@@ -11,6 +11,7 @@ namespace ShopInventory.Item
     public class ItemService
     {
         private List<ItemSO> allItems;
+        private List<ItemSO> allSelectableItems;
         private Dictionary<int, ItemController> allItemControllers;
         private GameObject parent;
         private EventService eventService;
@@ -31,6 +32,9 @@ namespace ShopInventory.Item
             {
                 foreach (var item in allItems)
                 {
+
+                    if (item.quantity == 0) item.quantity = 1;
+
                     allItemControllers.Add(item.ID, new ItemController(new ItemModel
                     {
                         itemSO = item,
@@ -140,6 +144,24 @@ namespace ShopInventory.Item
                     }
                 }
             }
+        }
+        public void SetAllSelectableItems(List<ItemSO>  allSelectableItems)
+        {
+            this.allSelectableItems = allSelectableItems;
+        }
+        public void OnMining()
+        {
+            AddControllerByItem(GetRandomItem());
+        }
+        public ItemSO GetRandomItem()
+        {
+            ItemSO tempItem = ScriptableObject.CreateInstance<ItemSO>();
+            int index = UnityEngine.Random.Range(0, allSelectableItems.Count - 1);
+            tempItem.Clone(this.allSelectableItems[index]);
+            int quantity = UnityEngine.Random.Range(0, 20);
+            tempItem.actionQuantity = quantity;
+            tempItem.quantity = quantity;
+            return tempItem;
         }
     }
 }

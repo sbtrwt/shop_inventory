@@ -9,12 +9,16 @@ namespace ShopInventory.UI
         private PlayerUIController playerUIController;
 
         private TMP_Text goldText;
-
+        private Button miningButton;
 
         private void Awake()
         {
             goldText = transform.Find("CurrencyUI/TotalCurrency").GetComponent<TMP_Text>();
-
+            miningButton = transform.Find("Mining").GetComponent<Button>();
+            if(miningButton != null)
+            {
+                miningButton.onClick.AddListener(OnClickingMining);
+            }
         }
         public void SetController(PlayerUIController controller)
         {
@@ -34,6 +38,10 @@ namespace ShopInventory.UI
             {
                 goldText.text = gold.ToString();
             }
+        }
+        public void OnClickingMining()
+        {
+            playerUIController.Mining();
         }
     }
 }
