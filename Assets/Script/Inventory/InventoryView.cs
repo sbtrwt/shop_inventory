@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using ShopInventory.Global;
+using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace ShopInventory.Inventory
@@ -8,8 +10,12 @@ namespace ShopInventory.Inventory
         private InventoryController inventoryController;
         private Button toggleButton;
         private GameObject parent;
+        private TMP_Text weightText;
 
-
+        private void Start()
+        {
+            weightText = transform.Find("WeightText").GetComponent<TMP_Text>();
+        }
         public void SetController(InventoryController inventoryController)
         {
             this.inventoryController = inventoryController;
@@ -37,6 +43,13 @@ namespace ShopInventory.Inventory
         public void OnToggleInventory()
         {
             gameObject.SetActive(!gameObject.activeSelf);
+        }
+        public void SetWeight(float val)
+        {
+            if (weightText != null)
+            {
+                weightText.text = $"W: {val}/{GlobalConstant.INVENTORY_MAX_WEIGHT}";
+            }
         }
     }
 }

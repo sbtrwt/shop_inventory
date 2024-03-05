@@ -1,4 +1,5 @@
 using ShopInventory.Event;
+using ShopInventory.Global;
 using ShopInventory.Player;
 using ShopInventory.UI;
 using System.Collections;
@@ -18,7 +19,8 @@ namespace ShopInventory.Item
         private float itemQuantity;
         private PlayerService playerService;
         private UIService uIService;
-        public ItemDescriptionController(ItemDescriptionModel model, EventService eventService, PlayerService playerService, UIService uIService)
+        private ItemService itemService;
+        public ItemDescriptionController(ItemDescriptionModel model, EventService eventService, PlayerService playerService, UIService uIService, ItemService itemService)
         {
             this.playerService = playerService;
             this.eventService = eventService;
@@ -26,6 +28,7 @@ namespace ShopInventory.Item
             InitView();
             this.eventService.OnItemClick.AddListener(SetItemData);
             this.uIService = uIService;
+            this.itemService = itemService;
         }
         public void InitView()
         {
@@ -62,16 +65,27 @@ namespace ShopInventory.Item
             tempSO.quantity = itemQuantity;
             int cost = 0;
             uIService.SetMessage("");
+            float inventoryWeight = playerService.GetWeight(); ;
+            float tempWeight;
             switch (itemAction)
             {
                 case ItemAction.Buy:
                     //Check gold to buy
                     cost =(int)(itemQuantity * tempSO.buyPrice);
-                    if(cost <= playerService.GetGold())
+                    tempWeight = (itemQuantity * tempSO.weight);
+                    if (cost <= playerService.GetGold())
                     {
-                        playerService.AddGold(-cost);
-                        eventService.OnItemBuy.InvokeEvent(tempSO);
-                        ResetItemData();
+                        if (  (tempWeight + inventoryWeight) <= GlobalConstant.INVENTORY_MAX_WEIGHT)
+                        {
+                            playerService.AddGold(-cost);
+                            eventService.OnItemBuy.InvokeEvent(tempSO);
+                            ResetItemData();
+                            eventService.OnWeightChange.InvokeEvent();
+                        }
+                        else
+                        {
+                            uIService.SetMessage("Weight overload");
+                        }
                     }
                     else
                     {
@@ -83,6 +97,7 @@ namespace ShopInventory.Item
                     playerService.AddGold(cost);
                     eventService.OnItemSell.InvokeEvent(tempSO);
                     ResetItemData();
+                    eventService.OnWeightChange.InvokeEvent();
                     break;
                 default:
                  //eventService.OnItemSell.InvokeEvent(tempSO) ;

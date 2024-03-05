@@ -1,4 +1,5 @@
 using ShopInventory.Event;
+using ShopInventory.Sound;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,11 @@ namespace ShopInventory.Item
         private ItemView itemView;
         private ItemModel itemModel;
         private EventService eventService;
-
-        public ItemController(ItemModel model, EventService eventService)
+        private SoundService soundService;
+        public ItemController(ItemModel model, EventService eventService, SoundService soundService)
         {
             this.eventService = eventService;
+            this.soundService = soundService;
             itemModel = model;
             InitView();
             if(model?.parent)
@@ -42,6 +44,7 @@ namespace ShopInventory.Item
 
         public void OnItemClick(ItemSO itemData)
         {
+            soundService.PlaySoundEffects(SoundType.ItemClick);
             eventService.OnItemClick.InvokeEvent(itemData);
         }
         public void DestroyItemView()

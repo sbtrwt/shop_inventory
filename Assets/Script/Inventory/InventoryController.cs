@@ -36,6 +36,9 @@ namespace ShopInventory.Inventory
         {
             return inventoryView.gameObject;
         }
-
+        public void SetWeight(float val)
+        {
+            inventoryView.SetWeight(val);
+        }
     }
 }
