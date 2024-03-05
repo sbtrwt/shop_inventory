@@ -89,6 +89,7 @@ namespace ShopInventory.Item
         }
         public void AddControllerByItem(ItemSO item)
         {
+            soundService.PlaySoundEffects(SoundType.ItemClick);
             if (item == null) return;
             if (allItemControllers == null)
                 allItemControllers = new Dictionary<int, ItemController>();
@@ -139,6 +140,7 @@ namespace ShopInventory.Item
         }
         public void OnActionRemove(ItemSO item)
         {
+            soundService.PlaySoundEffects(SoundType.ItemClick);
             if (allItemControllers != null && allItemControllers.Count > 0)
             {
                 if (allItemControllers.ContainsKey(item.ID))
@@ -167,7 +169,7 @@ namespace ShopInventory.Item
         }
         public void OnMining()
         {
-            soundService.PlaySoundEffects(SoundType.ItemBuy);
+            soundService.PlaySoundEffects(SoundType.Mining);
             ItemSO item = GetRandomItem();
             float tempWeight = item.quantity * item.weight;
             float inventoryWeight = playerService.GetWeight();

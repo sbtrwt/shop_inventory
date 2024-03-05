@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: sound
   m_EditorClassIdentifier: 
   audioList:
-  - soundType: 0
-    audio: {fileID: 8300000, guid: 075652b86fa3d7a4d97e02e3006781fc, type: 3}
   - soundType: 1
-    audio: {fileID: 8300000, guid: 99178262b0125b4408b66708bfaae961, type: 3}
-  - soundType: 3
-    audio: {fileID: 8300000, guid: 99178262b0125b4408b66708bfaae961, type: 3}
+    audio: {fileID: 8300000, guid: 075652b86fa3d7a4d97e02e3006781fc, type: 3}
   - soundType: 2
     audio: {fileID: 8300000, guid: 99178262b0125b4408b66708bfaae961, type: 3}
+  - soundType: 3
+    audio: {fileID: 8300000, guid: 549ef31590ac36340b97184b69207612, type: 3}
+  - soundType: 4
+    audio: {fileID: 8300000, guid: 549ef31590ac36340b97184b69207612, type: 3}
+  - soundType: 5
+    audio: {fileID: 8300000, guid: b9c1e29b0f3df184591ac8ab648b96f9, type: 3}
