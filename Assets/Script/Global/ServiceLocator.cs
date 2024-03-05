@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ShopInventory.Item;
+using ShopInventory.Sound;
 
 namespace ShopInventory.Global
 {
@@ -17,6 +18,7 @@ namespace ShopInventory.Global
         private ShopService shopService;
         private InventoryService inventoryService;
         private UIService uIService;
+        private SoundService soundService;
         //Shop component services
         private ItemContainerService shopItemContainerService;
         private ItemDescriptionService shopItemDescriptionService;
@@ -45,6 +47,7 @@ namespace ShopInventory.Global
             playerService = new PlayerService();
             shopService = new ShopService(data.ShopModel);
             inventoryService = new InventoryService(data.InventoryModel);
+            soundService = new SoundService(data.SoundModel);
             //Shop services
             shopItemContainerService = new ItemContainerService(data.ShopModel.ItemContainerModel);
             shopItemService = new ItemService();
@@ -66,18 +69,18 @@ namespace ShopInventory.Global
         {
             playerService.InjectDependencies(eventService);
             //Shop injection
-            shopItemService.InjectDependencies(eventService, uiService);
+            shopItemService.InjectDependencies(eventService, uiService, playerService,soundService);
             shopItemContainerService.InjectDependencies(shopItemService);
             shopItemFilterService.InjectDependencies(eventService);
-            shopItemDescriptionService.InjectDependencies(eventService, playerService, uiService);
+            shopItemDescriptionService.InjectDependencies(eventService, playerService, uiService, shopItemService);
             shopService.InjectDependencies(shopItemContainerService, shopItemDescriptionService, eventService, shopItemService, shopItemFilterService);
 
             //Inventory injection
-            inventoryItemService.InjectDependencies(eventService, uiService);
+            inventoryItemService.InjectDependencies(eventService, uiService, playerService,soundService);
             inventoryItemContainerService.InjectDependencies(inventoryItemService);
-            inventoryItemDescriptionService.InjectDependencies(eventService, playerService, uiService);
+            inventoryItemDescriptionService.InjectDependencies(eventService, playerService, uiService, inventoryItemService);
             inventoryItemFilterService.InjectDependencies(eventService);
-            inventoryService.InjectDependencies(inventoryItemContainerService, inventoryItemDescriptionService, eventService, inventoryItemService, inventoryItemFilterService);
+            inventoryService.InjectDependencies(inventoryItemContainerService, inventoryItemDescriptionService, eventService, inventoryItemService, inventoryItemFilterService,playerService);
 
             //UI service injection
             uiService.InjectDependencies(eventService);

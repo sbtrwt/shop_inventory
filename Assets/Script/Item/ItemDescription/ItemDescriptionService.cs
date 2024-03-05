@@ -19,10 +19,10 @@ namespace ShopInventory.Item
             this.itemDescriptionModel = itemDescriptionModel;
         }
 
-        public void InjectDependencies(EventService eventService, PlayerService playerService, UIService uiService)
+        public void InjectDependencies(EventService eventService, PlayerService playerService, UIService uiService,ItemService itemService)
         {
             this.eventService = eventService;
-            itemDescriptionController = new ItemDescriptionController(itemDescriptionModel, eventService, playerService, uiService);
+            itemDescriptionController = new ItemDescriptionController(itemDescriptionModel, eventService, playerService, uiService, itemService);
         }
 
         public void SetParent(GameObject parent)

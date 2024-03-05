@@ -9,6 +9,7 @@ namespace ShopInventory.Player
     {
         private int gold;
         private EventService eventService;
+        private float weight;
         public PlayerService()
         {
 
@@ -27,6 +28,20 @@ namespace ShopInventory.Player
         public int GetGold()
         {
             return gold;
+        }
+        public void AddWeight(float val)
+        {
+            this.weight += val;
+        
+        }
+        public void SetWeight(float val)
+        {
+            this.weight = val;
+         
+        }
+        public float GetWeight()
+        {
+            return weight;
         }
     }
 }

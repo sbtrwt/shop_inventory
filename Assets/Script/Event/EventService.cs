@@ -16,6 +16,7 @@ namespace ShopInventory.Event
         public EventController OnMining { get; private set; }
 
         public EventController<ItemType> OnItemFilter { get; private set; }
+        public EventController OnWeightChange { get; private set; }
         public EventService()
         {
             OnItemBuy = new EventController<ItemSO>();
@@ -24,6 +25,7 @@ namespace ShopInventory.Event
             OnGoldChange = new EventController<int>();
             OnMining = new EventController();
             OnItemFilter = new EventController<ItemType>();
+            OnWeightChange = new EventController();
         }
     }
 }

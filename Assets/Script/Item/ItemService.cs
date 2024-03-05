@@ -1,4 +1,7 @@
 ﻿using ShopInventory.Event;
+using ShopInventory.Global;
+using ShopInventory.Player;
+using ShopInventory.Sound;
 using ShopInventory.UI;
 using System;
 using System.Collections.Generic;
@@ -18,14 +21,18 @@ namespace ShopInventory.Item
         private GameObject parent;
         private EventService eventService;
         private UIService uiService;
+        private PlayerService playerService;
+        private SoundService soundService;
         public ItemService()
         {
 
         }
-        public void InjectDependencies(EventService eventService, UIService uiService)
+        public void InjectDependencies(EventService eventService, UIService uiService, PlayerService playerService, SoundService soundService)
         {
             this.eventService = eventService;
             this.uiService = uiService;
+            this.playerService = playerService;
+            this.soundService = soundService;
             this.eventService.OnItemFilter.AddListener(OnFilterByItemType);
         }
         public void InitController(List<ItemSO> allItems, GameObject parent)
@@ -44,8 +51,9 @@ namespace ShopInventory.Item
                     {
                         itemSO = item,
                         parent = parent
-                    }, eventService));
+                    }, eventService, soundService));
                 }
+
             }
         }
         public void SetItemParent(GameObject parent)
@@ -99,11 +107,12 @@ namespace ShopInventory.Item
                     {
                         itemSO = item,
                         parent = parent
-                    }, eventService);
+                    }, eventService,soundService);
                     newItemController.SetParent(parent);
                     allItemControllers.Add(item.ID, newItemController);
                 }
             }
+            eventService.OnWeightChange.InvokeEvent();
         }
 
         public void RemoveItem(ItemSO item)
@@ -148,6 +157,7 @@ namespace ShopInventory.Item
                         RemoveControllerByID(item.ID);
 
                     }
+                    eventService.OnWeightChange.InvokeEvent();
                 }
             }
         }
@@ -157,9 +167,21 @@ namespace ShopInventory.Item
         }
         public void OnMining()
         {
+            soundService.PlaySoundEffects(SoundType.ItemBuy);
             ItemSO item = GetRandomItem();
-            uiService.SetMessage($"You got { item.actionQuantity } { item.shortName }");
-            AddControllerByItem(item);
+            float tempWeight = item.quantity * item.weight;
+            float inventoryWeight = playerService.GetWeight();
+            if ((tempWeight + inventoryWeight) <= GlobalConstant.INVENTORY_MAX_WEIGHT)
+            {
+                uiService.SetMessage($"You got { item.actionQuantity } { item.shortName }");
+                AddControllerByItem(item);
+
+
+            }
+            else
+            {
+                uiService.SetMessage($"Weight overloaded!!");
+            }
         }
         public ItemSO GetRandomItem()
         {
@@ -182,6 +204,16 @@ namespace ShopInventory.Item
             {
                 itemCtrl.Value.SetVisible((type == ItemType.None) || (itemCtrl.Value.GetItemData().type == type));
             }
+        }
+        public float GetAllWeight()
+        {
+            float weight = 0;
+            foreach (var ctrl in allItemControllers)
+            {
+                var data = ctrl.Value.GetItemData();
+                weight += data.weight * data.quantity;
+            }
+            return weight;
         }
     }
 }

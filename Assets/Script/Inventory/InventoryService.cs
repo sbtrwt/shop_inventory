@@ -1,5 +1,6 @@
 using ShopInventory.Item;
 using ShopInventory.Event;
+using ShopInventory.Player;
 
 namespace ShopInventory.Inventory
 {
@@ -12,22 +13,25 @@ namespace ShopInventory.Inventory
         private ItemService itemService;
         private InventoryModel inventoryModel;
         private ItemFilterService itemFilterService;
+        private PlayerService playerService;
         public InventoryService(InventoryModel model)
         {
             inventoryController = new InventoryController(model);
             this.inventoryModel = model;
         }
        
-        public void InjectDependencies(ItemContainerService itemContainerService, ItemDescriptionService itemDescriptionService, EventService eventService, ItemService itemService, ItemFilterService itemFilterService)
+        public void InjectDependencies(ItemContainerService itemContainerService, ItemDescriptionService itemDescriptionService, EventService eventService, ItemService itemService, ItemFilterService itemFilterService, PlayerService playerService)
         {
             this.itemContainerService = itemContainerService;
             this.itemDescriptionService = itemDescriptionService;
             this.eventService = eventService;
             this.itemService = itemService;
+            this.itemFilterService = itemFilterService;
+            this.playerService = playerService;
             this.eventService.OnItemSell.AddListener(this.itemService.OnActionRemove);
             this.eventService.OnItemBuy.AddListener(this.itemService.OnActionAdd);
             this.eventService.OnMining.AddListener(this.itemService.OnMining);
-            this.itemFilterService = itemFilterService;
+            this.eventService.OnWeightChange.AddListener(SetWeight);
         }
         public void Start()
         {
@@ -38,6 +42,13 @@ namespace ShopInventory.Inventory
             itemDescriptionService.SetItemAction(ItemAction.Sell);
 
             itemFilterService.SetParent(inventoryController.GetViewObject());
+            SetWeight();
+        }
+        public void SetWeight() 
+        {
+            float weight = itemService.GetAllWeight();
+            playerService.SetWeight(weight);
+            inventoryController.SetWeight(weight);
         }
 
     }
