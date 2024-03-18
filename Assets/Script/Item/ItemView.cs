@@ -11,12 +11,10 @@ namespace ShopInventory.Item
         private ItemController itemController;
         [SerializeField] private Image itemImage;
         [SerializeField] private TMP_Text quantityText;
-        private Button itemButton;
+        [SerializeField] private Button itemButton;
         
         private void Awake()
         {
-            quantityText = transform.Find("Quantity").GetComponent<TMP_Text>();
-            itemButton = transform.Find("Button").GetComponent<Button>();
             if (itemButton != null)
             {
 

@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1faf9938c8c42b54c982bf94512ee3e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldText: {fileID: 8411570149341415783}
+  miningButton: {fileID: 949610208002476371}
 --- !u!1 &5150791455689166438
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,3 +409,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1297894612538819889, guid: d7b97c8504508cc4daccad86120356f0, type: 3}
   m_PrefabInstance: {fileID: 529471391772538670}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8411570149341415783 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8350492918113582665, guid: d7b97c8504508cc4daccad86120356f0, type: 3}
+  m_PrefabInstance: {fileID: 529471391772538670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
