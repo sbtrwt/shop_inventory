@@ -11,22 +11,13 @@ namespace ShopInventory.Item
         private ItemFilterController itemFilterController;
 
       
-        private Button materialButton;
-        private Button weaponButton;
-        private Button consumableButton;
-        private Button treasureButton;
-        private Button allButton;
+        [SerializeField]private Button materialButton;
+        [SerializeField]private Button weaponButton;
+        [SerializeField]private Button consumableButton;
+        [SerializeField]private Button treasureButton;
+        [SerializeField] private Button allButton;
         private void Start()
         {
-
-            materialButton = transform.Find("MaterialButton").GetComponent<Button>();
-            weaponButton = transform.Find("WeaponButton").GetComponent<Button>();
-            consumableButton = transform.Find("ConsumableButton").GetComponent<Button>();
-            treasureButton = transform.Find("TreasureButton").GetComponent<Button>();
-            allButton = transform.Find("All").GetComponent<Button>();
-
-
-
             if (materialButton != null)
             { materialButton.onClick.AddListener(OnMaterialButtonClick); }
 

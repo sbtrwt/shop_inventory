@@ -871,6 +871,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e35d2e96c615a8542bff909e8f0034ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialButton: {fileID: 8934548665419267481}
+  weaponButton: {fileID: 7026837164520338655}
+  consumableButton: {fileID: 1667020236669955569}
+  treasureButton: {fileID: 5439559007107609094}
+  allButton: {fileID: 1677755668544263895}
 --- !u!1 &7399430483890248958
 GameObject:
   m_ObjectHideFlags: 0

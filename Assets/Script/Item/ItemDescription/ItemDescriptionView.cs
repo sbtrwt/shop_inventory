@@ -10,26 +10,17 @@ namespace ShopInventory.Item
     {
         private ItemDescriptionController itemDescriptionController;
 
-        private Image itemImage;
-        private TMP_Text textDescription;
-        private Button addButton;
-        private Button removeButton;
-        private Button actionButton;
-        private TMP_Text textPrice;
-        private TMP_Text textQuantity;
+        [SerializeField]private Image itemImage;
+        [SerializeField] private TMP_Text textDescription;
+        [SerializeField] private Button addButton;
+        [SerializeField] private Button removeButton;
+        [SerializeField] private Button actionButton;
+        [SerializeField] private TMP_Text textPrice;
+        [SerializeField] private TMP_Text textQuantity;
+        [SerializeField] private TMP_Text textWeight;
         private ItemSO itemData;
-        private TMP_Text textWeight;
         private void Start()
         {
-            itemImage = transform.Find("ItemImage").GetComponent<Image>();
-            textDescription = transform.Find("ItemDesc").GetComponent<TMP_Text>();
-            textPrice = transform.Find("Price/PriceText").GetComponent<TMP_Text>();
-            textQuantity = transform.Find("QuantityPanel/QuantityText").GetComponent<TMP_Text>();
-            actionButton = transform.Find("ActionButton").GetComponent<Button>();
-            removeButton = transform.Find("QuantityPanel/DeleteQuantity").GetComponent<Button>();
-            addButton = transform.Find("QuantityPanel/AddQuantity").GetComponent<Button>();
-            textWeight = transform.Find("ItemWeight").GetComponent<TMP_Text>();
-
             if (textDescription != null)
             { textDescription.text = "Test"; }
             if (actionButton != null)

@@ -5,22 +5,17 @@ using UnityEngine.UI;
 
 namespace ShopInventory.Inventory
 {
-   public class InventoryView : MonoBehaviour
+    public class InventoryView : MonoBehaviour
     {
         private InventoryController inventoryController;
         private Button toggleButton;
         private GameObject parent;
-        private TMP_Text weightText;
+        [SerializeField] private TMP_Text weightText;
 
-        private void Start()
-        {
-            weightText = transform.Find("WeightText").GetComponent<TMP_Text>();
-        }
         public void SetController(InventoryController inventoryController)
         {
             this.inventoryController = inventoryController;
         }
-
 
         public void SetParent(GameObject parent)
         {
@@ -32,7 +27,6 @@ namespace ShopInventory.Inventory
             }
 
         }
-
         public void SetInventoryButton(Button _shopButton)
         {
             toggleButton = GameObject.Instantiate(_shopButton);

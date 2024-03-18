@@ -21,10 +21,16 @@ namespace ShopInventory.Shop
             this.itemDescriptionService = itemDescriptionService;
             this.eventService = eventService;
             this.itemService = itemService;
+            this.itemFilterService = itemFilterService;
+            SubscribeEvent();
+        }
+
+        private void SubscribeEvent()
+        {
             this.eventService.OnItemSell.AddListener(this.itemService.OnActionAdd);
             this.eventService.OnItemBuy.AddListener(this.itemService.OnActionRemove);
-            this.itemFilterService = itemFilterService;
         }
+
         public void Start()
         {
             itemContainerService.InitItemContainer();

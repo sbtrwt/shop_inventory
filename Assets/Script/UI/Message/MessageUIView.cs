@@ -9,14 +9,8 @@ namespace ShopInventory.UI
     {
         private MessageUIController messageUIController;
 
-        private TMP_Text messageText;
+        [SerializeField]private TMP_Text messageText;
 
-
-        private void Awake()
-        {
-            messageText = transform.Find("MessageText").GetComponent<TMP_Text>();
-
-        }
         public void SetController(MessageUIController controller)
         {
             messageUIController = controller;
@@ -37,7 +31,7 @@ namespace ShopInventory.UI
                 StartCoroutine(ShowForSeconds(1.5f));
             }
         }
-        IEnumerator ShowForSeconds(float sec)
+        private IEnumerator ShowForSeconds(float sec)
         {
             gameObject.SetActive(true);
             yield return new WaitForSeconds(sec);

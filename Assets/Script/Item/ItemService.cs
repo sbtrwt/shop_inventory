@@ -33,8 +33,14 @@ namespace ShopInventory.Item
             this.uiService = uiService;
             this.playerService = playerService;
             this.soundService = soundService;
+            SubscribeEvent();
+        }
+
+        private void SubscribeEvent()
+        {
             this.eventService.OnItemFilter.AddListener(OnFilterByItemType);
         }
+
         public void InitController(List<ItemSO> allItems, GameObject parent)
         {
             this.parent = parent;
