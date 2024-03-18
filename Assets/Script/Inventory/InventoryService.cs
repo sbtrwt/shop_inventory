@@ -28,11 +28,17 @@ namespace ShopInventory.Inventory
             this.itemService = itemService;
             this.itemFilterService = itemFilterService;
             this.playerService = playerService;
+            SubscribeEvent();
+        }
+
+        private void SubscribeEvent()
+        {
             this.eventService.OnItemSell.AddListener(this.itemService.OnActionRemove);
             this.eventService.OnItemBuy.AddListener(this.itemService.OnActionAdd);
             this.eventService.OnMining.AddListener(this.itemService.OnMining);
             this.eventService.OnWeightChange.AddListener(SetWeight);
         }
+
         public void Start()
         {
             itemContainerService.InitItemContainer();
