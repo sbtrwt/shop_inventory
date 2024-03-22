@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91014bbdf8acd784ea102920538dca45, type: 3}
   m_Name: shopSO
   m_EditorClassIdentifier: 
+  ID: 1
   ShopPrefab: {fileID: 1211636493677308124, guid: b0008201a06ea7543bda36d289150ec2, type: 3}

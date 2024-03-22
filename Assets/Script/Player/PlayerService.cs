@@ -29,14 +29,14 @@ namespace ShopInventory.Player
         {
             return gold;
         }
-        public void AddWeight(float val)
+        public void AddWeight(float weight)
         {
-            this.weight += val;
+            this.weight += weight;
         
         }
-        public void SetWeight(float val)
+        public void SetWeight(float weight)
         {
-            this.weight = val;
+            this.weight = weight;
          
         }
         public float GetWeight()

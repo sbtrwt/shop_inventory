@@ -10,7 +10,7 @@ namespace ShopInventory.Item
     {
         private ItemDescriptionController itemDescriptionController;
 
-        [SerializeField]private Image itemImage;
+        [SerializeField] private Image itemImage;
         [SerializeField] private TMP_Text textDescription;
         [SerializeField] private Button addButton;
         [SerializeField] private Button removeButton;
@@ -21,21 +21,18 @@ namespace ShopInventory.Item
         private ItemSO itemData;
         private void Start()
         {
-            if (textDescription != null)
-            { textDescription.text = "Test"; }
-            if (actionButton != null)
-            { actionButton.onClick.AddListener(OnActionButtonClick); }
-            if (addButton != null)
-            { addButton.onClick.AddListener(OnAddQuantityButtonClick); }
-            if (removeButton != null)
-            { removeButton.onClick.AddListener(OnRemoveQuantityButtonClick); }
+
+            textDescription.text = "Test";
+
+            actionButton.onClick.AddListener(OnActionButtonClick);
+
+            addButton.onClick.AddListener(OnAddQuantityButtonClick);
+
+            removeButton.onClick.AddListener(OnRemoveQuantityButtonClick);
         }
         public void SetParent(GameObject parent)
         {
-            if (parent != null)
-            {
-                gameObject.transform.SetParent(parent.transform, false);
-            }
+            gameObject.transform.SetParent(parent.transform, false);
         }
 
         public void SetController(ItemDescriptionController controller)
@@ -46,17 +43,11 @@ namespace ShopInventory.Item
         public void SetItemData(ItemSO itemData)
         {
             this.itemData = itemData;
-            if (textDescription != null)
-            { textDescription.text = itemData.description; }
-            if (textPrice != null)
-            { textPrice.text = itemData.buyPrice.ToString(); }
-            if (textQuantity != null)
-            { textQuantity.text = itemData.quantity.ToString(); }
-            if (itemImage != null)
-            { itemImage.sprite = itemData.icon; }
-            
-            if (textWeight != null)
-            { textWeight.text = $"Weight : {itemData.weight}"; }
+            textDescription.text = itemData.Description;
+            textPrice.text = itemData.BuyPrice.ToString();
+            textQuantity.text = itemData.Quantity.ToString();
+            itemImage.sprite = itemData.Icon;
+            textWeight.text = $"Weight : {itemData.Weight}";
         }
 
         public void OnActionButtonClick()
@@ -73,8 +64,7 @@ namespace ShopInventory.Item
         }
         public void SetQuantity(float quantity)
         {
-            if (textQuantity != null)
-            { textQuantity.text = quantity.ToString(); }
+            textQuantity.text = quantity.ToString();
         }
     }
 }

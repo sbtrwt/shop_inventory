@@ -10,8 +10,8 @@ namespace ShopInventory.Item
     [Serializable]
     public class ItemDescriptionModel
     {
-        public ItemSO itemData;
-        public GameObject parent;
-        public ItemDescriptionSO itemDescriptionSO;
+        public ItemSO ItemData;
+        public GameObject Parent;
+        public ItemDescriptionSO ItemDescriptionSO;
     }
 }

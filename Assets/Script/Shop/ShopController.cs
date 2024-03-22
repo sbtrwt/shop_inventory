@@ -20,10 +20,10 @@ namespace ShopInventory.Shop
       
         public void InitView()
         {
-            shopView = Object.Instantiate(shopModel.shopSO.ShopPrefab);
+            shopView = Object.Instantiate(shopModel.ShopSO.ShopPrefab);
             shopView.SetController(this);
-            shopView.SetParent(shopModel.canvas);
-            shopView.SetShopButton(shopModel.shopButton);
+            shopView.SetParent(shopModel.Canvas);
+            shopView.SetShopButton(shopModel.ShopButton);
             
         }
         public void OpenShop() {

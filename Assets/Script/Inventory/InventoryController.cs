@@ -19,10 +19,10 @@ namespace ShopInventory.Inventory
 
         public void InitView()
         {
-            inventoryView = Object.Instantiate(inventoryModel.inventorySO.InventoryPrefab);
+            inventoryView = Object.Instantiate(inventoryModel.InventorySO.InventoryPrefab);
             inventoryView.SetController(this);
-            inventoryView.SetParent(inventoryModel.canvas);
-            inventoryView.SetInventoryButton(inventoryModel.toggleButton);
+            inventoryView.SetParent(inventoryModel.Canvas);
+            inventoryView.SetInventoryButton(inventoryModel.ToggleButton);
 
         }
        
@@ -36,9 +36,9 @@ namespace ShopInventory.Inventory
         {
             return inventoryView.gameObject;
         }
-        public void SetWeight(float val)
+        public void SetWeight(float weight)
         {
-            inventoryView.SetWeight(val);
+            inventoryView.SetWeight(weight);
         }
     }
 }

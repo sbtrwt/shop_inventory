@@ -10,8 +10,8 @@ namespace ShopInventory.Item
     [Serializable]
     public class ItemFilterModel
     {
-        public ItemSO itemData;
-        public GameObject parent;
-        public ItemFilterSO itemFilterSO;
+        public ItemSO ItemData;
+        public GameObject Parent;
+        public ItemFilterSO ItemFilterSO;
     }
 }

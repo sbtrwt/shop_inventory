@@ -51,12 +51,12 @@ namespace ShopInventory.Item
                 foreach (var item in allItems)
                 {
 
-                    if (item.quantity == 0) item.quantity = 1;
+                    if (item.Quantity == 0) item.Quantity = 1;
 
                     allItemControllers.Add(item.ID, new ItemController(new ItemModel
                     {
-                        itemSO = item,
-                        parent = parent
+                        ItemSO = item,
+                        Parent = parent
                     }, eventService, soundService));
                 }
 
@@ -64,7 +64,6 @@ namespace ShopInventory.Item
         }
         public void SetItemParent(GameObject parent)
         {
-
             if (allItemControllers != null)
             {
                 foreach (var i in allItemControllers)
@@ -83,38 +82,43 @@ namespace ShopInventory.Item
         public void ResetItems()
         {
             if (allItems != null)
-                allItems.Clear();
+            { allItems.Clear(); }
             else
-                allItems = new List<ItemSO>();
+            { allItems = new List<ItemSO>(); }
         }
         public void AddNewItem(ItemSO item)
         {
             if (allItems == null)
-                allItems = new List<ItemSO>();
+            { allItems = new List<ItemSO>(); }
             allItems.Add(item);
         }
         public void AddControllerByItem(ItemSO item)
         {
             soundService.PlaySoundEffects(SoundType.ItemClick);
-            if (item == null) return;
+            if (item == null)
+            {
+                return;
+            }
             if (allItemControllers == null)
+            {
                 allItemControllers = new Dictionary<int, ItemController>();
+            }
             if (allItemControllers.ContainsKey(item.ID))
             {
                 ItemSO tempItem = allItemControllers[item.ID].GetItemData();
-                tempItem.quantity += item.actionQuantity;
+                tempItem.Quantity += item.ActionQuantity;
                 allItemControllers[item.ID].SetItemData(tempItem);
                 allItemControllers[item.ID].SetItemView(tempItem);
             }
             else
             {
-                if (item.actionQuantity > 0)
+                if (item.ActionQuantity > 0)
                 {
-                    var newItemController = new ItemController(new ItemModel
+                    ItemController newItemController = new ItemController(new ItemModel
                     {
-                        itemSO = item,
-                        parent = parent
-                    }, eventService,soundService);
+                        ItemSO = item,
+                        Parent = parent
+                    }, eventService, soundService);
                     newItemController.SetParent(parent);
                     allItemControllers.Add(item.ID, newItemController);
                 }
@@ -125,18 +129,15 @@ namespace ShopInventory.Item
         public void RemoveItem(ItemSO item)
         {
             if (allItems == null)
-                allItems = new List<ItemSO>();
+            { allItems = new List<ItemSO>(); }
             allItems.Remove(item);
         }
         public void RemoveControllerByID(int id)
         {
-            if (allItemControllers != null && allItemControllers.Count > 0)
+            if (allItemControllers != null && allItemControllers.Count > 0 && allItemControllers.ContainsKey(id))
             {
-                if (allItemControllers.ContainsKey(id))
-                {
-                    allItemControllers[id].DestroyItemView();
-                    allItemControllers.Remove(id);
-                }
+                allItemControllers[id].DestroyItemView();
+                allItemControllers.Remove(id);
             }
         }
         public void OnActionAdd(ItemSO item)
@@ -147,26 +148,25 @@ namespace ShopInventory.Item
         public void OnActionRemove(ItemSO item)
         {
             soundService.PlaySoundEffects(SoundType.ItemClick);
-            if (allItemControllers != null && allItemControllers.Count > 0)
+            if (allItemControllers != null && allItemControllers.Count > 0 && allItemControllers.ContainsKey(item.ID))
             {
-                if (allItemControllers.ContainsKey(item.ID))
+
+                ItemSO tempItem = allItemControllers[item.ID].GetItemData();
+                if (tempItem.Quantity >= item.Quantity)
                 {
-                    ItemSO tempItem = allItemControllers[item.ID].GetItemData();
-                    if (tempItem.quantity >= item.quantity)
-                    {
-                        tempItem.quantity -= item.actionQuantity;
-                        allItemControllers[item.ID].SetItemData(tempItem);
-                        allItemControllers[item.ID].SetItemView(tempItem);
-                    }
-
-                    if (tempItem.quantity <= 0)
-                    {
-                        RemoveItem(item);
-                        RemoveControllerByID(item.ID);
-
-                    }
-                    eventService.OnWeightChange.InvokeEvent();
+                    tempItem.Quantity -= item.ActionQuantity;
+                    allItemControllers[item.ID].SetItemData(tempItem);
+                    allItemControllers[item.ID].SetItemView(tempItem);
                 }
+
+                if (tempItem.Quantity <= 0)
+                {
+                    RemoveItem(item);
+                    RemoveControllerByID(item.ID);
+
+                }
+                eventService.OnWeightChange.InvokeEvent();
+
             }
         }
         public void SetAllSelectableItems(List<ItemSO> allSelectableItems)
@@ -177,18 +177,18 @@ namespace ShopInventory.Item
         {
             soundService.PlaySoundEffects(SoundType.Mining);
             ItemSO item = GetRandomItem();
-            float tempWeight = item.quantity * item.weight;
+            float tempWeight = item.Quantity * item.Weight;
             float inventoryWeight = playerService.GetWeight();
             if ((tempWeight + inventoryWeight) <= GlobalConstant.INVENTORY_MAX_WEIGHT)
             {
-                uiService.SetMessage($"You got { item.actionQuantity } { item.shortName }");
+                uiService.SetMessage($"You got { item.ActionQuantity } { item.ShortName }");
                 AddControllerByItem(item);
 
 
             }
             else
             {
-                uiService.SetMessage($"Weight overloaded!!");
+                uiService.SetMessage(GlobalConstant.TextWeightOverload);
             }
         }
         public ItemSO GetRandomItem()
@@ -199,18 +199,18 @@ namespace ShopInventory.Item
                 int index = UnityEngine.Random.Range(0, allSelectableItems.Count);
                 tempItem.Clone(this.allSelectableItems[index]);
                 int quantity = UnityEngine.Random.Range(1, 5);
-                tempItem.actionQuantity = quantity;
-                tempItem.quantity = quantity;
+                tempItem.ActionQuantity = quantity;
+                tempItem.Quantity = quantity;
                 return tempItem;
             }
             else
-                return null;
+            { return null; }
         }
         public void OnFilterByItemType(ItemType type)
         {
             foreach (var itemCtrl in allItemControllers)
             {
-                itemCtrl.Value.SetVisible((type == ItemType.None) || (itemCtrl.Value.GetItemData().type == type));
+                itemCtrl.Value.SetVisible((type == ItemType.None) || (itemCtrl.Value.GetItemData().Type == type));
             }
         }
         public float GetAllWeight()
@@ -219,7 +219,7 @@ namespace ShopInventory.Item
             foreach (var ctrl in allItemControllers)
             {
                 var data = ctrl.Value.GetItemData();
-                weight += data.weight * data.quantity;
+                weight += data.Weight * data.Quantity;
             }
             return weight;
         }

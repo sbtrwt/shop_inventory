@@ -7,7 +7,7 @@ namespace ShopInventory.UI
     [Serializable]
     public class UIModel
     {
-        public UISO uiSO;
-        public GameObject parent;
+        public UISO UISO;
+        public GameObject Parent;
     }
 }

@@ -10,28 +10,19 @@ namespace ShopInventory.Item
     {
         private ItemFilterController itemFilterController;
 
-      
-        [SerializeField]private Button materialButton;
-        [SerializeField]private Button weaponButton;
-        [SerializeField]private Button consumableButton;
-        [SerializeField]private Button treasureButton;
+
+        [SerializeField] private Button materialButton;
+        [SerializeField] private Button weaponButton;
+        [SerializeField] private Button consumableButton;
+        [SerializeField] private Button treasureButton;
         [SerializeField] private Button allButton;
         private void Start()
         {
-            if (materialButton != null)
-            { materialButton.onClick.AddListener(OnMaterialButtonClick); }
-
-            if (weaponButton != null)
-            { weaponButton.onClick.AddListener(OnWeaponButtonClick); }
-
-            if (consumableButton != null)
-            { consumableButton.onClick.AddListener(OnConsumableButtonClick); }
-
-            if (treasureButton != null)
-            { treasureButton.onClick.AddListener(OnTreasueButtonClick); }
-
-            if (allButton != null)
-            { allButton.onClick.AddListener(OnAllButtonClick); }
+            materialButton.onClick.AddListener(OnMaterialButtonClick);
+            weaponButton.onClick.AddListener(OnWeaponButtonClick);
+            consumableButton.onClick.AddListener(OnConsumableButtonClick);
+            treasureButton.onClick.AddListener(OnTreasueButtonClick);
+            allButton.onClick.AddListener(OnAllButtonClick);
         }
         public void SetParent(GameObject parent)
         {
@@ -46,7 +37,7 @@ namespace ShopInventory.Item
             itemFilterController = controller;
         }
 
-       
+
 
         public void OnMaterialButtonClick()
         {

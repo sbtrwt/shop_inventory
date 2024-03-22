@@ -11,9 +11,9 @@ namespace ShopInventory.Item
     [Serializable]
     public class ItemContainerModel
     {
-        public List<ItemSO> allItems;
-        public GameObject parent;
-        public ItemContainerSO itemContainerSO;
-        public List<ItemSO> allSelectableItems;
+        public List<ItemSO> AllItems;
+        public GameObject Parent;
+        public ItemContainerSO ItemContainerSO;
+        public List<ItemSO> AllSelectableItems;
     }
 }

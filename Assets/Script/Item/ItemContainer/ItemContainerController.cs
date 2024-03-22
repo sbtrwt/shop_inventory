@@ -17,7 +17,7 @@ public class ItemContainerController
 
     public void InitView()
     {
-        itemContainerView = Object.Instantiate(itemContainerModel.itemContainerSO.ItemContainerPrefab);
+        itemContainerView = Object.Instantiate(itemContainerModel.ItemContainerSO.ItemContainerPrefab);
         itemContainerView.SetController(this);
     }
     public void SetParent(GameObject parent)

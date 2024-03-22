@@ -8,8 +8,8 @@ namespace ShopInventory.Item
     [Serializable]
     public class ItemModel
     {
-        public ItemSO itemSO;
-        public GameObject parent;
+        public ItemSO ItemSO;
+        public GameObject Parent;
     }
 
 }

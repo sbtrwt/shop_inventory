@@ -9,9 +9,9 @@ namespace ShopInventory.Shop
     [Serializable]
     public class ShopModel
     {
-        public ShopSO shopSO;
-        public GameObject canvas;
-        public Button shopButton;
+        public ShopSO ShopSO;
+        public GameObject Canvas;
+        public Button ShopButton;
         public ItemContainerModel ItemContainerModel;
         public ItemDescriptionModel ItemDescriptionModel;
         public ItemFilterModel ItemFilterModel;
