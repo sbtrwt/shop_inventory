@@ -19,14 +19,11 @@ namespace ShopInventory.Item
         {
             this.itemFilterModel = itemFilterModel;
             this.eventService = eventService;
-
             InitView();
-
-
         }
         public void InitView()
         {
-            itemFilterView = Object.Instantiate(itemFilterModel.itemFilterSO.ItemFilterPrefab);
+            itemFilterView = Object.Instantiate(itemFilterModel.ItemFilterSO.ItemFilterPrefab);
             itemFilterView.SetController(this);
         }
         public void SetParent(GameObject parent)
@@ -41,7 +38,6 @@ namespace ShopInventory.Item
 
         public void OnClickFilter(ItemType type)
         {
-            Debug.Log(type);
             eventService.OnItemFilter.InvokeEvent(type);
         }
 

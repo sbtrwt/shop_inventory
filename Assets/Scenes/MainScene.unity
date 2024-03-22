@@ -279,68 +279,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serviceLocatorData:
     ShopModel:
-      shopSO: {fileID: 11400000, guid: ae9b71475c4db214ab15726f7d88b73d, type: 2}
-      canvas: {fileID: 1713997774}
-      shopButton: {fileID: 5051259697697934721, guid: d66252692a2ef2c4aaebe1530ee6d2c0, type: 3}
+      ShopSO: {fileID: 11400000, guid: ae9b71475c4db214ab15726f7d88b73d, type: 2}
+      Canvas: {fileID: 1713997774}
+      ShopButton: {fileID: 5051259697697934721, guid: d66252692a2ef2c4aaebe1530ee6d2c0, type: 3}
       ItemContainerModel:
-        allItems:
-        - {fileID: 11400000, guid: 718f591660310ee42bdea8e8f957e379, type: 2}
-        - {fileID: 11400000, guid: 1f0f2b28be6f76a4b962e08a4379f40d, type: 2}
-        parent: {fileID: 0}
-        itemContainerSO: {fileID: 11400000, guid: c8aa33823c8965546933196323ddceff, type: 2}
-        allSelectableItems: []
+        AllItems: []
+        Parent: {fileID: 0}
+        ItemContainerSO: {fileID: 11400000, guid: c8aa33823c8965546933196323ddceff, type: 2}
+        AllSelectableItems: []
       ItemDescriptionModel:
-        itemData: {fileID: 0}
-        parent: {fileID: 0}
-        itemDescriptionSO: {fileID: 11400000, guid: 03b953bb503967c44a1940e000775358, type: 2}
+        ItemData: {fileID: 0}
+        Parent: {fileID: 0}
+        ItemDescriptionSO: {fileID: 11400000, guid: 03b953bb503967c44a1940e000775358, type: 2}
       ItemFilterModel:
-        itemData: {fileID: 0}
-        parent: {fileID: 0}
-        itemFilterSO: {fileID: 11400000, guid: f9ec04dc686301a49a1a4147989e093e, type: 2}
+        ItemData: {fileID: 0}
+        Parent: {fileID: 0}
+        ItemFilterSO: {fileID: 11400000, guid: f9ec04dc686301a49a1a4147989e093e, type: 2}
     InventoryModel:
-      inventorySO: {fileID: 11400000, guid: 7ccd35421402aaa44867f331023b1787, type: 2}
-      canvas: {fileID: 1713997774}
-      toggleButton: {fileID: 1314926313254496328, guid: fba1c541d9bc7a443811e27f0d79a88e, type: 3}
+      InventorySO: {fileID: 11400000, guid: 7ccd35421402aaa44867f331023b1787, type: 2}
+      Canvas: {fileID: 1713997774}
+      ToggleButton: {fileID: 1314926313254496328, guid: fba1c541d9bc7a443811e27f0d79a88e, type: 3}
       ItemContainerModel:
-        allItems: []
-        parent: {fileID: 0}
-        itemContainerSO: {fileID: 11400000, guid: c8aa33823c8965546933196323ddceff, type: 2}
-        allSelectableItems:
+        AllItems: []
+        Parent: {fileID: 0}
+        ItemContainerSO: {fileID: 11400000, guid: c8aa33823c8965546933196323ddceff, type: 2}
+        AllSelectableItems:
         - {fileID: 11400000, guid: 718f591660310ee42bdea8e8f957e379, type: 2}
-        - {fileID: 11400000, guid: d6a3b13c355e0044aab053b83118bb27, type: 2}
-        - {fileID: 11400000, guid: 182e5a61d558388458dbeea556d8fa28, type: 2}
-        - {fileID: 11400000, guid: c65caf85d1eba204798f6f9b378b8463, type: 2}
         - {fileID: 11400000, guid: 1f0f2b28be6f76a4b962e08a4379f40d, type: 2}
-        - {fileID: 11400000, guid: e67e8601c4b3d1245ad46b0226147358, type: 2}
-        - {fileID: 11400000, guid: 3b83df275b9799d4aacdba8356ee974d, type: 2}
-        - {fileID: 11400000, guid: 6dbf74bc2ed13a341b6bef1fdfd1cfa3, type: 2}
         - {fileID: 11400000, guid: 8b00da6e74b9fb4418ec1220b3deadda, type: 2}
-        - {fileID: 11400000, guid: 7e2e39148eea206418744319c86ff1c6, type: 2}
-        - {fileID: 11400000, guid: e032ffefd08c3ff43a20b48687c1fe78, type: 2}
-        - {fileID: 11400000, guid: 1779c9325d95f0a4f8b4133a64359fc4, type: 2}
-        - {fileID: 11400000, guid: 0becabc03ee58e14b80ab6ceddc7d0b8, type: 2}
-        - {fileID: 11400000, guid: 36d2308d6df664a448b6d50c24685c56, type: 2}
-        - {fileID: 11400000, guid: ba6518ed57b402842a57dfeba8893d30, type: 2}
-        - {fileID: 11400000, guid: b45490ed912f8b446ac99a65a6c01665, type: 2}
-        - {fileID: 11400000, guid: ba705065df9b9c24dadff430acf1b8ea, type: 2}
-        - {fileID: 11400000, guid: 85345c7ddfb084048af5d45178b92b22, type: 2}
-        - {fileID: 11400000, guid: cff976883a6f741468fb318d9a3f5f2c, type: 2}
-        - {fileID: 11400000, guid: d259d34edf32aaa4bb3e09228d952c21, type: 2}
+        - {fileID: 11400000, guid: bdf0fdf937f47a84eb21c37366e14e4b, type: 2}
       ItemDescriptionModel:
-        itemData: {fileID: 0}
-        parent: {fileID: 0}
-        itemDescriptionSO: {fileID: 11400000, guid: 53003a995ebd35346bf4ed9674577785, type: 2}
+        ItemData: {fileID: 11400000, guid: 718f591660310ee42bdea8e8f957e379, type: 2}
+        Parent: {fileID: 0}
+        ItemDescriptionSO: {fileID: 11400000, guid: 53003a995ebd35346bf4ed9674577785, type: 2}
       ItemFilterModel:
-        itemData: {fileID: 0}
-        parent: {fileID: 0}
-        itemFilterSO: {fileID: 11400000, guid: f9ec04dc686301a49a1a4147989e093e, type: 2}
+        ItemData: {fileID: 11400000, guid: 718f591660310ee42bdea8e8f957e379, type: 2}
+        Parent: {fileID: 0}
+        ItemFilterSO: {fileID: 11400000, guid: f9ec04dc686301a49a1a4147989e093e, type: 2}
     UIModel:
-      uiSO: {fileID: 11400000, guid: 780b351775ec00041b410df7d16ad917, type: 2}
-      parent: {fileID: 1713997774}
+      UISO: {fileID: 11400000, guid: 780b351775ec00041b410df7d16ad917, type: 2}
+      Parent: {fileID: 1713997774}
     SoundModel:
-      soundSO: {fileID: 11400000, guid: 59890fbdaf283a7489d6657f69694994, type: 2}
-      audioEffects: {fileID: 243507832}
-      backgroundMusic: {fileID: 1015788086}
+      SoundSO: {fileID: 11400000, guid: 59890fbdaf283a7489d6657f69694994, type: 2}
+      AudioEffects: {fileID: 243507832}
+      BackgroundMusic: {fileID: 1015788086}
 --- !u!4 &489589922
 Transform:
   m_ObjectHideFlags: 0

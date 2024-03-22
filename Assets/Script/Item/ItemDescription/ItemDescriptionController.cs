@@ -32,7 +32,7 @@ namespace ShopInventory.Item
         }
         public void InitView()
         {
-            itemDescriptionView = Object.Instantiate(itemDescriptionModel.itemDescriptionSO.ItemDescriptionPrefab);
+            itemDescriptionView = Object.Instantiate(itemDescriptionModel.ItemDescriptionSO.ItemDescriptionPrefab);
             itemDescriptionView.SetController(this);
         }
         public void SetParent(GameObject parent)
@@ -47,8 +47,8 @@ namespace ShopInventory.Item
         public void SetItemData(ItemSO item)
         {
             selectedItem = item;
-            selectedItem.actionQuantity = item.quantity;
-            itemQuantity = item.quantity;
+            selectedItem.ActionQuantity = item.Quantity;
+            itemQuantity = item.Quantity;
             itemDescriptionView.SetItemData(item);
         }
         public void SetItemAction(ItemAction itemAction)
@@ -58,60 +58,77 @@ namespace ShopInventory.Item
         public void OnActionButtonClick()
         {
             if (itemQuantity == 0) { return; }
+            ItemSO tempSO = GetSelectedItemClone();
 
-            selectedItem.actionQuantity = itemQuantity;
-            ItemSO tempSO = ScriptableObject.CreateInstance<ItemSO>();
-            tempSO.Clone(selectedItem);
-            tempSO.quantity = itemQuantity;
-            int cost = 0;
             uIService.SetMessage("");
             float inventoryWeight = playerService.GetWeight(); ;
-            float tempWeight;
+
             switch (itemAction)
             {
                 case ItemAction.Buy:
                     //Check gold to buy
-                    cost =(int)(itemQuantity * tempSO.buyPrice);
-                    tempWeight = (itemQuantity * tempSO.weight);
-                    if (cost <= playerService.GetGold())
-                    {
-                        if (  (tempWeight + inventoryWeight) <= GlobalConstant.INVENTORY_MAX_WEIGHT)
-                        {
-                            playerService.AddGold(-cost);
-                            eventService.OnItemBuy.InvokeEvent(tempSO);
-                            ResetItemData();
-                            eventService.OnWeightChange.InvokeEvent();
-                        }
-                        else
-                        {
-                            uIService.SetMessage("Weight overload");
-                        }
-                    }
-                    else
-                    {
-                        uIService.SetMessage("Not enough gold");
-                    }
+                    ItemBuyAction(tempSO, inventoryWeight);
                     break;
                 case ItemAction.Sell:
-                    cost = (int)(itemQuantity * tempSO.sellPrice);
-                    playerService.AddGold(cost);
-                    eventService.OnItemSell.InvokeEvent(tempSO);
-                    ResetItemData();
-                    eventService.OnWeightChange.InvokeEvent();
+                    ItemSellAction(tempSO);
                     break;
                 default:
-                 //eventService.OnItemSell.InvokeEvent(tempSO) ;
                     break;
             }
         }
-        public void OnAddQuantity() 
-        { 
+
+        private ItemSO GetSelectedItemClone()
+        {
+            ItemSO tempSO;
+            selectedItem.ActionQuantity = itemQuantity;
+            tempSO = ScriptableObject.CreateInstance<ItemSO>();
+            tempSO.Clone(selectedItem);
+            tempSO.Quantity = itemQuantity;
+            return tempSO;
+        }
+
+        private int ItemSellAction(ItemSO tempSO)
+        {
+            int cost = (int)(itemQuantity * tempSO.SellPrice);
+            playerService.AddGold(cost);
+            eventService.OnItemSell.InvokeEvent(tempSO);
+            ResetItemData();
+            eventService.OnWeightChange.InvokeEvent();
+            return cost;
+        }
+
+        private void ItemBuyAction(ItemSO tempSO, float inventoryWeight)
+        {
+            int cost = (int)(itemQuantity * tempSO.BuyPrice);
+            float tempWeight = (itemQuantity * tempSO.Weight);
+            if (cost <= playerService.GetGold())
+            {
+                if ((tempWeight + inventoryWeight) <= GlobalConstant.INVENTORY_MAX_WEIGHT)
+                {
+                    playerService.AddGold(-cost);
+                    eventService.OnItemBuy.InvokeEvent(tempSO);
+                    ResetItemData();
+                    eventService.OnWeightChange.InvokeEvent();
+                }
+                else
+                {
+                    uIService.SetMessage(GlobalConstant.TextWeightOverload);
+                }
+            }
+            else
+            {
+                uIService.SetMessage(GlobalConstant.TextNotEnoughGold);
+            }
+        }
+
+        public void OnAddQuantity()
+        {
             if (selectedItem != null)
             {
                 itemQuantity += 1;
-                if (selectedItem.quantity < itemQuantity)
+                if (selectedItem.Quantity < itemQuantity)
                 {
-                    itemQuantity = selectedItem.quantity;
+                    itemQuantity = selectedItem.Quantity;
                 }
                 itemDescriptionView.SetQuantity(itemQuantity);
             }
@@ -129,12 +146,12 @@ namespace ShopInventory.Item
             tempSO.Clone(selectedItem);
             selectedItem = tempSO;
             selectedItem.ID = 0;
-            selectedItem.icon = null;
-            selectedItem.quantity = 0;
-            selectedItem.description = "";
-            selectedItem.sellPrice = 0;
-            selectedItem.buyPrice = 0;
-            selectedItem.weight = 0;
+            selectedItem.Icon = null;
+            selectedItem.Quantity = 0;
+            selectedItem.Description = "";
+            selectedItem.SellPrice = 0;
+            selectedItem.BuyPrice = 0;
+            selectedItem.Weight = 0;
             itemQuantity = 0;
             itemDescriptionView.SetItemData(selectedItem);
         }

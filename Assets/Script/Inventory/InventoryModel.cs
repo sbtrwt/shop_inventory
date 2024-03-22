@@ -8,9 +8,9 @@ namespace ShopInventory.Inventory
     [Serializable]
     public class InventoryModel
     {
-        public InventorySO inventorySO;
-        public GameObject canvas;
-        public Button toggleButton;
+        public InventorySO InventorySO;
+        public GameObject Canvas;
+        public Button ToggleButton;
         public ItemContainerModel ItemContainerModel;
         public ItemDescriptionModel ItemDescriptionModel;
         public ItemFilterModel ItemFilterModel;

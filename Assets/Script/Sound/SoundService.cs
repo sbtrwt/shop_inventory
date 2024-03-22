@@ -12,9 +12,9 @@ namespace ShopInventory.Sound
 
         public SoundService(SoundModel model)
         {
-            this.soundScriptableObject = model.soundSO;
-            this.audioEffects = model.audioEffects;
-            this.backgroundMusic = model.backgroundMusic;
+            this.soundScriptableObject = model.SoundSO;
+            this.audioEffects = model.AudioEffects;
+            this.backgroundMusic = model.BackgroundMusic;
             PlaybackgroundMusic(SoundType.BackgroundMusic, true);
         }
 

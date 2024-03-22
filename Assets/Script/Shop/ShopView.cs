@@ -12,7 +12,7 @@ namespace ShopInventory.Shop
         private ShopController shopController;
         private Button shopButton;
         private GameObject parent;
-        
+
 
         public void SetController(ShopController shopController)
         {
@@ -22,21 +22,23 @@ namespace ShopInventory.Shop
 
         public void SetParent(GameObject parent)
         {
-          
+
             if (parent != null)
             {
                 this.parent = parent;
                 gameObject.transform.SetParent(parent?.transform, false);
             }
-               
+
         }
 
         public void SetShopButton(Button _shopButton)
         {
             shopButton = GameObject.Instantiate(_shopButton);
             if (parent != null)
+            {
                 shopButton.transform.SetParent(parent.transform, false);
-            shopButton.onClick.AddListener (OnToggleShop);
+            }
+            shopButton.onClick.AddListener(OnToggleShop);
         }
         public void OnToggleShop()
         {

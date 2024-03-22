@@ -8,7 +8,7 @@ namespace ShopInventory.Item
     {
         private ItemContainerController itemContainerController;
         private ItemService itemService;
-        ItemContainerModel itemContainerModel;
+        private ItemContainerModel itemContainerModel;
         public ItemContainerService(ItemContainerModel model)
         {
             itemContainerModel = model;
@@ -20,8 +20,8 @@ namespace ShopInventory.Item
         }
         public void InitItemContainer()
         {
-            itemService.InitController(itemContainerModel.allItems, itemContainerController.GetViewObject());
-            itemService.SetAllSelectableItems(itemContainerModel.allSelectableItems);
+            itemService.InitController(itemContainerModel.AllItems, itemContainerController.GetViewObject());
+            itemService.SetAllSelectableItems(itemContainerModel.AllSelectableItems);
         }
 
         public void SetParent(GameObject parent)

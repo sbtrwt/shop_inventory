@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: gem_so
   m_EditorClassIdentifier: 
   ID: 1
-  type: 4
-  icon: {fileID: -1043782816, guid: e5b8d142bb66d6642acb65466fa58041, type: 3}
-  description: This is gem.
-  buyPrice: 5
-  sellPrice: 5
-  weight: 2
-  rarity: 2
-  quantity: 4
-  itemViewPrefab: {fileID: -63324163324435147, guid: 2154274d07718db429614e69c164132f, type: 3}
-  actionQuantity: 5
-  shortName: Gem
+  Type: 4
+  Icon: {fileID: -4614682972187989533, guid: fd19aa9e2065e5448ae57f1cae669ac2, type: 3}
+  Description: Gem
+  BuyPrice: 5
+  SellPrice: 5
+  Weight: 2
+  Rarity: 1
+  Quantity: 1
+  ItemViewPrefab: {fileID: -63324163324435147, guid: 2154274d07718db429614e69c164132f, type: 3}
+  ActionQuantity: 0
+  ShortName: Gem

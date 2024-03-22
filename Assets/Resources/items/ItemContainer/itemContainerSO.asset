@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f49f34ff084c5448b65f16a16a3e4dc, type: 3}
   m_Name: itemContainerSO
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 1
   ItemContainerPrefab: {fileID: -8741376570882767320, guid: bfef218f5c7d5e946977296f564620c3, type: 3}

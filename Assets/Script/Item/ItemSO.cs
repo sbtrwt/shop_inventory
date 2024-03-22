@@ -11,32 +11,32 @@ namespace ShopInventory.Item
     public class ItemSO : ScriptableObject
     {
         public int ID;
-        public ItemType type;
-        public Sprite icon;
-        public string description;
-        public float buyPrice;
-        public float sellPrice;
-        public float weight;
-        public ItemRarity rarity;
-        public float quantity;
-        public ItemView itemViewPrefab;
-        public float actionQuantity;
-        public string shortName;
+        public ItemType Type;
+        public Sprite Icon;
+        public string Description;
+        public float BuyPrice;
+        public float SellPrice;
+        public float Weight;
+        public ItemRarity Rarity;
+        public float Quantity;
+        public ItemView ItemViewPrefab;
+        public float ActionQuantity;
+        public string ShortName;
         public ItemSO() { }
         public void Clone( ItemSO item)
         {
             ID = item.ID;
-            type = item.type;
-            icon = item.icon;
-            description = item.description;
-            buyPrice = item.buyPrice;
-            sellPrice = item.sellPrice;
-            weight = item.weight;
-            rarity = item.rarity;
-            quantity = item.quantity;
-            itemViewPrefab = item.itemViewPrefab;
-            actionQuantity = item.actionQuantity;
-            shortName = item.shortName;
+            Type = item.Type;
+            Icon = item.Icon;
+            Description = item.Description;
+            BuyPrice = item.BuyPrice;
+            SellPrice = item.SellPrice;
+            Weight = item.Weight;
+            Rarity = item.Rarity;
+            Quantity = item.Quantity;
+            ItemViewPrefab = item.ItemViewPrefab;
+            ActionQuantity = item.ActionQuantity;
+            ShortName = item.ShortName;
         }
     }
 }

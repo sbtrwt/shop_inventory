@@ -18,28 +18,28 @@ namespace ShopInventory.Item
             this.soundService = soundService;
             itemModel = model;
             InitView();
-            if(model?.parent)
-                SetParent(model.parent);
+            if(model?.Parent)
+                SetParent(model.Parent);
         }
 
         public void InitView()
         {
-            itemView = Object.Instantiate(itemModel.itemSO.itemViewPrefab);
+            itemView = Object.Instantiate(itemModel.ItemSO.ItemViewPrefab);
             itemView.SetController(this);
-            itemView.SetItemView(itemModel.itemSO);
+            itemView.SetItemView(itemModel.ItemSO);
         }
         public void SetParent(GameObject parent)
         {
-            itemModel.parent = parent;
+            itemModel.Parent = parent;
             itemView.SetParent(parent);
         }
         public ItemSO GetItemData()
         {
-            return itemModel.itemSO;
+            return itemModel.ItemSO;
         }
         public void SetItemData(ItemSO item)
         {
-             itemModel.itemSO = item;
+             itemModel.ItemSO = item;
         }
 
         public void OnItemClick(ItemSO itemData)

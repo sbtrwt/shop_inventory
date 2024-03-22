@@ -38,12 +38,9 @@ namespace ShopInventory.Inventory
         {
             gameObject.SetActive(!gameObject.activeSelf);
         }
-        public void SetWeight(float val)
-        {
-            if (weightText != null)
-            {
-                weightText.text = $"W: {val}/{GlobalConstant.INVENTORY_MAX_WEIGHT}";
-            }
+        public void SetWeight(float weight)
+        { 
+            weightText.text = $"W: {weight}/{GlobalConstant.INVENTORY_MAX_WEIGHT}";
         }
     }
 }
