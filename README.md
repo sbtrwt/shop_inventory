@@ -13,6 +13,14 @@ Game Features:
 - Quantity Selection: Adjust item quantities before confirming transactions.
 - Audio & Visual Feedback: Enjoy sound effects and on-screen notifications during transactions.
 
+## Code Implementation
+- Dependency Injection
+- Service locator
+- Observer design pattern
+- ScriptableObject
+- MVC-S architecture
+- Singleton design pattern
+  
 ### HOW TO PLAY
 - Player can click M(mining) button to get random item
 - Player can click item and check description of item
